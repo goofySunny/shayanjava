@@ -4,10 +4,10 @@
 <html>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>kode12.com | Welcome</title>
+	<title>Demo | Welcome</title>
 	</head>
 	
 	<body>
-		Welcome koder! Current Date is ${currentDate }
+		Welcome coder ! Current Date is ${currentDate }
 	</body>
 </html>
