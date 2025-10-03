@@ -1,4 +1,4 @@
-package ir.napatech.controller;
+package ir.najaftech.controller;
 
 
 import ir.najaftech.model.ShowcaseItem;
