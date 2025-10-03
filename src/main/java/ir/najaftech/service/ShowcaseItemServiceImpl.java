@@ -5,7 +5,6 @@ import ir.najaftech.model.ShowcaseItem;
 import ir.najaftech.repository.ShowcaseItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
