@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ShayanApplication<shayan>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "ir.najaftech.ShayanApplication",
+            "projectName": "shayan",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

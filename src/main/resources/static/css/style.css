@@ -108,6 +108,7 @@
 
 .search-container input {
   all: unset;
+  width: 100%;
 }
 
 .menu button {
