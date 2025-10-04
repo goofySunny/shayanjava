@@ -6,7 +6,6 @@ import ir.najaftech.service.ShowcaseItemService;
 import lombok.RequiredArgsConstructor;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -32,12 +31,6 @@ public class ProtectedShowcaseController {
         ModelAndView mv = new ModelAndView("showcase-dash");
         mv.addObject("showcaseItems", service.getAllShowcaseItems());
         return mv;
-    }
-    // Test
-    @GetMapping("/test")
-    @ResponseBody
-    public ResponseEntity<Object> showcaseTest() {
-        return ResponseEntity.ok().body(service.getAllShowcaseItems());
     }
 
     @GetMapping("/add")
