@@ -32,9 +32,9 @@
     <div>
       <!-- Search Bar -->
       <div class="quick-access">
-        <a href="showcase/add">Add New</a>
+        <a href="/admin/showcase/add">Add New</a>
         <a href="/">Home</a>
-        <a href="/admin">Dashboard</a>
+        <a href="/admin/showcase">Dashboard</a>
       </div>
       <!-- End of Search Bar -->
     </div>
