@@ -1,6 +1,5 @@
 package ir.najaftech.controller;
 
-
 import ir.najaftech.model.ShowcaseItem;
 import ir.najaftech.service.ShowcaseItemService;
 import lombok.RequiredArgsConstructor;
@@ -11,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -42,7 +43,8 @@ public class ProtectedShowcaseController {
     }
 
     @PostMapping("/upload")
-    public String uploadNewShowcaseItem(@ModelAttribute ShowcaseItem item, Model model, BindingResult result) throws IOException {
+    public String uploadNewShowcaseItem(@ModelAttribute ShowcaseItem item, Model model, BindingResult result)
+            throws IOException {
 
         if (result.hasErrors()) {
             model.addAttribute("message", "Something went wrong");
@@ -54,5 +56,13 @@ public class ProtectedShowcaseController {
         model.addAttribute("message", "Showcase Item added");
         return "redirect:/admin/showcase/add";
     }
+
+    @GetMapping("/{id}")
+    public String getMethodName(@PathVariable long id, Model model) {
+        model.addAttribute("showcaseItem", service.getShowCaseItemById(id));
+
+        return "showcase-addition";
+    }
+    
 
 }

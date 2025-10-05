@@ -97,13 +97,13 @@
   <!-- Hero Section -->
   <section id="hero" class="hero">
     <c:forEach items="${showcaseItems}" var="showcase">
-      <div class="hero-item">
+      <div class="hero-item active">
         <div class="image">
-          <img src="${ showcaseItems.imgURL }" alt="">
+          <img src="/showcase/images/${showcase.id}" alt="Hero Item">
         </div>
         <div>
           <p>
-            ${ showcaseItems.desc }
+            ${showcase.desc}
           </p>
         </div>
       </div>

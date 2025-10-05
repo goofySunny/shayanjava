@@ -4,8 +4,4 @@ document.addEventListener("DOMContentLoaded", () => {
         loader.classList.remove("loading")
         loader.classList.add("loaded")
     }, 2000);
-
-    setInterval(() => {
-        scrollHeroItem();
-    }, 5000);
 })

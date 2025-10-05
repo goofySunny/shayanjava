@@ -29,15 +29,19 @@
           <th>
             Active
           </th>
+          <th>
+            Edit
+          </th>
         </tr>
       </thead>
       <tbody>
         <c:forEach items="${showcaseItems}" var="showcase">
           <tr>
-            <td><img src="/image/${showcase.id}" alt="Showcase image"></td>
+            <td><img src="/showcase/images/${showcase.id}" alt="Showcase image"></td>
             <td>${showcase.title}</td>
             <td>${showcase.desc}</td>
             <td>${showcase.active ? "True" : "False"}</td>
+            <td><a href="/admin/showcase/${showcase.id}">Edit showcase</a></td>
           </tr>
         </c:forEach >
       </tbody>

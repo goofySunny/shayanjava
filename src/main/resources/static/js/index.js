@@ -20,6 +20,7 @@ function slide(direction) {
 
 function scrollHeroItem() {
     let heroItems = document.querySelectorAll(".hero-item");
+    console.log(heroItems)
     for (let i = 0; i < heroItems.length; i++) {
         heroItems[i].classList.remove("active");
         heroItems[i].classList.remove("deactive");
