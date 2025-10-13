@@ -99,7 +99,9 @@
     <c:forEach items="${showcaseItems}" var="showcase">
       <div class="hero-item active">
         <div class="image">
-          <img src="/showcase/images/${showcase.id}" alt="Hero Item">
+          <a href="/showcase/${showcase.id}">
+            <img src="/showcase/images/${showcase.id}" alt="Hero Item">
+          </a>
         </div>
         <div>
           <p>

@@ -52,5 +52,12 @@ public class MainController {
         return new ResponseEntity<>(item.getImage(), headers, HttpStatus.OK);
 
     }
+
+    @GetMapping("/showcase/{id}")
+    public String focusShowcase(@PathVariable Long id, Model model) {
+        model.addAttribute("showcase", showcaseService.getShowCaseItemById(id));
+
+        return "showcase";
+    }
     
 }
