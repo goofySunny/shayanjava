@@ -19,10 +19,9 @@
         </div>
     </c:if>
     
-    <form:form method="POST" 
-           action="upload" 
-           modelAttribute="showcaseItem"
-           enctype="multipart/form-data">
+    <form:form method="POST"
+           action="/admin/showcase/edit/${id}"
+           modelAttribute="showcaseItem">
     
         <!-- Title Field -->
         <div class="form-group">
@@ -47,12 +46,6 @@
                 </form:label>
             </div>
             <form:errors path="active" cssClass="error" />
-        </div>
-        
-        <!-- File Field (Note: Spring form tags don't have file input, use regular HTML) -->
-        <div class="form-group">
-            <label for="file">Upload Image:</label>
-            <input type="file" id="file" name="file" accept="image/*" required />
         </div>
         
         <button type="submit" class="btn btn-primary">Submit</button>

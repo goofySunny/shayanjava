@@ -223,7 +223,7 @@
     z-index: 0;
     img {
       right: 0;
-      top: -100px;
+      /* top: -100px; */
       border-radius: 30%;
       width: 100%;
       object-fit: contain;

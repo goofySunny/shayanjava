@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -37,11 +37,6 @@ public class ProtectedShowcaseController {
         return "showcase-addition";
     }
 
-    @PostMapping("/edit")
-    public String editShowcase() {
-        return "showcase-edit";
-    }
-
     @PostMapping("/upload")
     public String uploadNewShowcaseItem(@ModelAttribute ShowcaseItem item, Model model, BindingResult result)
             throws IOException {
@@ -57,11 +52,31 @@ public class ProtectedShowcaseController {
         return "redirect:/admin/showcase/add";
     }
 
-    @GetMapping("/{id}")
-    public String getMethodName(@PathVariable long id, Model model) {
-        model.addAttribute("showcaseItem", service.getShowCaseItemById(id));
+    @PostMapping("/edit/{id}")
+    public String updateShowcaseItem(@PathVariable long id, @ModelAttribute ShowcaseItem item, Model model, BindingResult result) {
 
-        return "showcase-addition";
+        if (result.hasErrors()) {
+            model.addAttribute("message", "Something went wrong");
+            return "redirect:/admin/showcase/edit/" + id;
+        }
+
+        try {
+            service.updateShowCaseItem(item, id);
+        } catch (Exception ex) {
+            model.addAttribute("message", "Something went wrong");
+            return "redirect:/admin/showcase/edit/" + id;
+        }
+
+        model.addAttribute("successMessage", "Showcase item successfully modified");
+        return "redirect:/admin/showcase";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editShowcase(@PathVariable long id, Model model) {
+        ShowcaseItem item = service.getShowCaseItemById(id);
+        model.addAttribute("showcaseItem", item);
+        model.addAttribute("successMessage", "Showcase was successfully modified");
+    return "showcase-edit";
     }
     
 
