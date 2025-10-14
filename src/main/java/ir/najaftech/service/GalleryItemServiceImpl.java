@@ -1,5 +1,6 @@
 package ir.najaftech.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -30,9 +31,14 @@ public class GalleryItemServiceImpl implements GalleryItemService {
     }
 
     @Override
-    public GalleryItem createGalleryItem(GalleryItem item) {
-        item.setActive(false);
-        return repo.save(item);
+    public GalleryItem createGalleryItem(GalleryItem item) throws IOException {
+        GalleryItem newItem = GalleryItem.builder()
+        .title(item.getTitle())
+        .active(false)
+        .image(item.getFile().getBytes())
+        .desc(item.getDesc())
+        .build();
+        return repo.save(newItem);
     }
 
     @Override

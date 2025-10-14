@@ -1,1 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+
+<footer>
+    <div class="footer">
+      <div class="contacts">
+        <p>Contact Us at: </p>
+        <a href="#">Instagram</a>
+        <a href="#">Telegram</a>
+        <a href="#">Mail</a>
+        <p>Office Number: 02100000000</p>
+      </div>
+      <hr>
+      <div class="location">
+        <p>Find us at:</p>
+        <p>Lisa Simpson 742 Evergreen Terrace Springfield</p>
+        <p>OR 97477 USA</p>
+      </div>
+    </div>
+      <div class="rights">
+        NajafTech all rights reserved
+      </div>
+  </footer>

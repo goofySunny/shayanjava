@@ -14,13 +14,23 @@
   /* Required color variables for the .light class and .dark class later */
   /* Very important to add the colors as variables here or else its gonna become painful */
   --bg-color: #e7e707;
+  --bg-secondary: #adad21; 
+  --text-primary: #333;
+  --text-secondary: #d6d1d1;
+}
+
+.dark {
+  --bg-color: #e7e707;
+  --bg-secondary: #adad21; 
+  --text-primary: #333;
+  --text-secondary: #d6d1d1;
 }
 
 .loading {
   display: flex;
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  position: sticky;
   top: 0;
   left: 0;
   background-color: black;
@@ -213,20 +223,22 @@
   display: flex;
   flex-direction: column;
   opacity: 0;
+  pointer-events: none;
   transform: translateX(50px);
   transition: opacity 1s ease, transform 1s ease;
 
   div {
     height: 50%;
     padding: 0.5rem;
-    background-color: blue;
     z-index: 0;
+
     img {
       right: 0;
+      top: 0;
       /* top: -100px; */
-      border-radius: 30%;
+      border-radius: 25px;
       width: 100%;
-      object-fit: contain;
+      object-fit: cover;
       position: absolute;
       z-index: 1;
     }
@@ -235,6 +247,7 @@
 
 .hero-item.active {
   opacity: 1;
+  pointer-events: alla;
   transform: translatex(0px);
 }
 
@@ -245,7 +258,6 @@
 
 .hero div:last-child {
   z-index: 2;
-  background-color: red;
 }
 
 .photo-gallery {
@@ -304,12 +316,47 @@
   }
 }
 
+.footer {
+  display: flex;
+  flex-direction: column;
+  background-color: green;
+  padding: 1rem;
+  overflow-x: hidden;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+}
+
+.rights {
+  margin: 1rem auto 0;
+}
+
+footer {
+  text-align: center;
+}
+
 /* Tablets and large smartphones */
 @media only screen and (min-width: 480px) {
 
   .logo button {
     h2 {
       display: block;
+    }
+  }
+
+  .footer {
+    flex-direction: row;
+
+    div {
+      min-width: 50%;
+      max-width: 50%;
     }
   }
 }
@@ -330,7 +377,7 @@
     div {
 
       img {
-        top : -200px;
+        top: -200px;
       }
     }
   }
@@ -385,7 +432,7 @@
 
 /* Large Desktops */
 @media only screen and (min-width: 1280px) {
-  
+
   .content-slider {
     width: 80%;
     height: max-content;
