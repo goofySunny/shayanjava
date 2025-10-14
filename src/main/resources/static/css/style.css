@@ -14,6 +14,16 @@
   /* Required color variables for the .light class and .dark class later */
   /* Very important to add the colors as variables here or else its gonna become painful */
   --bg-color: #e7e707;
+  --bg-secondary: #adad21; 
+  --text-primary: #333;
+  --text-secondary: #d6d1d1;
+}
+
+.dark {
+  --bg-color: #e7e707;
+  --bg-secondary: #adad21; 
+  --text-primary: #333;
+  --text-secondary: #d6d1d1;
 }
 
 .loading {
@@ -220,7 +230,6 @@
   div {
     height: 50%;
     padding: 0.5rem;
-    background-color: blue;
     z-index: 0;
 
     img {
@@ -249,7 +258,6 @@
 
 .hero div:last-child {
   z-index: 2;
-  background-color: red;
 }
 
 .photo-gallery {
