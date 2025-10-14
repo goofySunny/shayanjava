@@ -120,6 +120,7 @@
       <a href="">بیشتر ></a>
     </div>
     <div class="gallery-slider">
+    
       <div class="gallery-item">
         <img src="/images/photo_2_2025-09-15_14-33-23.jpg" alt="">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis blandit. Praesent

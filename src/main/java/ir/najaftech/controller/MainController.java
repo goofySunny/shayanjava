@@ -1,6 +1,7 @@
 package ir.najaftech.controller;
 
 import ir.najaftech.model.ShowcaseItem;
+import ir.najaftech.service.GalleryItemService;
 import ir.najaftech.service.ShowcaseItemService;
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MainController {
 
     private final ShowcaseItemService showcaseService;
+    private final GalleryItemService galleryService;
 
     @GetMapping
     public String home(Model model) {
@@ -40,9 +42,16 @@ public class MainController {
         return "contact";
     }
 
+    @GetMapping("/showcase/{id}")
+    public String focusShowcase(@PathVariable Long id, Model model) {
+        model.addAttribute("showcase", showcaseService.getShowCaseItemById(id));
+
+        return "showcase";
+    }
+
     @GetMapping("/showcase/images/{id}")
     @ResponseBody
-    public ResponseEntity<Object> getImage(@PathVariable Long id) {
+    public ResponseEntity<Object> getShowcaseImage(@PathVariable Long id) {
         ShowcaseItem item = showcaseService.getShowCaseItemById(id);
 
         HttpHeaders headers = new HttpHeaders();
@@ -53,11 +62,17 @@ public class MainController {
 
     }
 
-    @GetMapping("/showcase/{id}")
-    public String focusShowcase(@PathVariable Long id, Model model) {
-        model.addAttribute("showcase", showcaseService.getShowCaseItemById(id));
+    @GetMapping("/gallery/images/{id}")
+    @ResponseBody
+    public ResponseEntity<Object> getGalleryImage(@PathVariable Long id) {
+        ShowcaseItem item = showcaseService.getShowCaseItemById(id);
 
-        return "showcase";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_PNG);
+        headers.setContentLength(item.getImage().length);
+
+        return new ResponseEntity<>(item.getImage(), headers, HttpStatus.OK);
+
     }
     
 }
