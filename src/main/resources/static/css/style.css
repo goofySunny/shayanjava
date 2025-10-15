@@ -26,6 +26,10 @@
   --text-secondary: #d6d1d1;
 }
 
+body {
+  background-color: var(--bg-color);
+}
+
 .loading {
   display: flex;
   width: 100vw;
@@ -132,6 +136,8 @@
 
 .content-parent {
   overflow-y: hidden;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
   position: relative;
   overflow-x: hidden;
 }
@@ -219,7 +225,7 @@
   position: absolute;
   min-width: 100%;
   height: 50vh;
-  background-color: azure;
+  background-color: var(--bg-secondary);
   display: flex;
   flex-direction: column;
   opacity: 0;
@@ -235,7 +241,6 @@
     img {
       right: 0;
       top: 0;
-      /* top: -100px; */
       border-radius: 25px;
       width: 100%;
       object-fit: cover;
@@ -261,8 +266,8 @@
 }
 
 .photo-gallery {
+  background: var(--bg-secondary);
   padding: 0 20px;
-  background-color: blue;
   color: white;
   font-weight: bold;
   direction: rtl;
@@ -286,16 +291,15 @@
   scroll-behavior: smooth;
   justify-content: space-evenly;
   height: 200px;
-  background-color: yellow;
 }
 
 .gallery-item {
+  color: var(--text-primary);
   padding: 0.5rem;
   height: 100%;
   min-width: 33%;
   max-width: 33%;
   margin: 0 1rem;
-  background: red;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -319,9 +323,12 @@
 .footer {
   display: flex;
   flex-direction: column;
-  background-color: green;
   padding: 1rem;
   overflow-x: hidden;
+}
+
+.footer img{
+  width: 16px;
 }
 
 .contacts {
@@ -369,6 +376,7 @@ footer {
   }
 
   .hero-item p {
+    color: var(--text-primary);
     font-size: 24px;
   }
 
@@ -398,7 +406,6 @@ footer {
 
   .photo-gallery {
     padding: 0 20px;
-    background-color: blue;
     color: white;
     font-weight: bold;
     direction: rtl;
@@ -422,7 +429,6 @@ footer {
     scroll-behavior: smooth;
     justify-content: space-evenly;
     height: 200px;
-    background-color: yellow;
   }
 
   .gallery-item {

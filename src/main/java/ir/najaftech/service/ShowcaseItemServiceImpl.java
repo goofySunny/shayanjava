@@ -42,7 +42,9 @@ public class ShowcaseItemServiceImpl implements ShowcaseItemService {
 
     @Override
     public ShowcaseItem updateShowCaseItem(ShowcaseItem item, long id) {
-        if (repo.findById(id).orElse(null) != null) {
+        ShowcaseItem old = repo.findById(id).orElse(null);
+        if (old != null) {
+            item.setImage(old.getImage());
             item.setId(id);
             return repo.save(item);
         }
