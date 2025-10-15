@@ -75,5 +75,18 @@ public class MainController {
         return new ResponseEntity<>(item.getImage(), headers, HttpStatus.OK);
 
     }
+
+    @GetMapping("/gallery/images/{id}")
+    @ResponseBody
+    public ResponseEntity<Object> getGalleryImage(@PathVariable Long id) throws Exception {
+        GalleryItem item = galleryService.getGalleryItemById(id);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_PNG);
+        headers.setContentLength(item.getImage().length);
+
+        return new ResponseEntity<>(item.getImage(), headers, HttpStatus.OK);
+
+    }
     
 }
