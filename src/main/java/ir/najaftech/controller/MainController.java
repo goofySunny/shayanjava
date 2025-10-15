@@ -65,7 +65,7 @@ public class MainController {
     @GetMapping("/gallery/images/{id}")
     @ResponseBody
     public ResponseEntity<Object> getGalleryImage(@PathVariable Long id) {
-        ShowcaseItem item = showcaseService.getShowCaseItemById(id);
+        ShowcaseItem item = galleryService.getGalleryItemById(id);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_PNG);
