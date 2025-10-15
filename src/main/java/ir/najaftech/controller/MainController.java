@@ -1,5 +1,6 @@
 package ir.najaftech.controller;
 
+import ir.najaftech.model.GalleryItem;
 import ir.najaftech.model.ShowcaseItem;
 import ir.najaftech.service.GalleryItemService;
 import ir.najaftech.service.ShowcaseItemService;
@@ -64,7 +65,7 @@ public class MainController {
 
     @GetMapping("/gallery/images/{id}")
     @ResponseBody
-    public ResponseEntity<Object> getGalleryImage(@PathVariable Long id) {
+    public ResponseEntity<Object> getGalleryImage(@PathVariable Long id) throws Exception {
         GalleryItem item = galleryService.getGalleryItemById(id);
 
         HttpHeaders headers = new HttpHeaders();
