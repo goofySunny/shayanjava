@@ -4,9 +4,9 @@
     <div class="footer">
       <div class="contacts">
         <p>Contact Us at: </p>
-        <a href="#">Instagram</a>
-        <a href="#">Telegram</a>
-        <a href="#">Mail</a>
+        <a href="#">Instagram <img src="/images/instagram.svg" alt=""></a>
+        <a href="#">Telegram <img src="/images/telegram.svg" alt=""></a>
+        <a href="#">Mail <img src="/images/email.svg" alt=""></a>
         <p>Office Number: 02100000000</p>
       </div>
       <hr>

@@ -41,7 +41,7 @@
             <td>${showcase.title}</td>
             <td>${showcase.desc}</td>
             <td>${showcase.active ? "True" : "False"}</td>
-            <td><a href="/admin/showcase/${showcase.id}">Edit showcase</a></td>
+            <td><a href="/admin/showcase/edit/${showcase.id}">Edit</a></td>
           </tr>
         </c:forEach >
       </tbody>
