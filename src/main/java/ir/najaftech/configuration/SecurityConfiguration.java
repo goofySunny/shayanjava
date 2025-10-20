@@ -35,7 +35,10 @@ public class SecurityConfiguration {
                             .anyRequest().permitAll();
                 }
         )
-                .formLogin(Customizer.withDefaults())
+                .formLogin(form -> {
+                    form.loginPage("/login")
+                        .permitAll();
+                })
                 .csrf(csrf -> csrf.disable())
                 .headers(header -> header.frameOptions(t -> t.sameOrigin()));
         return http.build();

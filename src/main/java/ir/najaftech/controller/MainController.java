@@ -1,8 +1,10 @@
 package ir.najaftech.controller;
 
 import ir.najaftech.model.GalleryItem;
+import ir.najaftech.model.ProvidedServiceItem;
 import ir.najaftech.model.ShowcaseItem;
 import ir.najaftech.service.GalleryItemService;
+import ir.najaftech.service.ProvidedServiceItemService;
 import ir.najaftech.service.ShowcaseItemService;
 import lombok.RequiredArgsConstructor;
 
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -25,6 +29,7 @@ public class MainController {
 
     private final ShowcaseItemService showcaseService;
     private final GalleryItemService galleryService;
+    private final ProvidedServiceItemService providedServiceItemService;
 
     @GetMapping
     public String home(Model model) {
@@ -76,10 +81,10 @@ public class MainController {
 
     }
 
-    @GetMapping("/gallery/images/{id}")
+    @GetMapping("/service/images/{id}")
     @ResponseBody
-    public ResponseEntity<Object> getGalleryImage(@PathVariable Long id) throws Exception {
-        GalleryItem item = galleryService.getGalleryItemById(id);
+    public ResponseEntity<Object> getProvidedServiceItemImage(@PathVariable Long id) throws Exception {
+        ProvidedServiceItem item = providedServiceItemService.getProvidedServiceItemById(id);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_PNG);
@@ -88,5 +93,11 @@ public class MainController {
         return new ResponseEntity<>(item.getImage(), headers, HttpStatus.OK);
 
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
     
+       
 }
