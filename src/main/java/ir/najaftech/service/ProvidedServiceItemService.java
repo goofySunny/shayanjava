@@ -11,10 +11,11 @@ public interface ProvidedServiceItemService {
 
     List<ProvidedServiceItem> getAllActiveProvidedServiceItems();
 
+    ProvidedServiceItem createProvidedServiceItem(ProvidedServiceItem item) throws IOException;
+
     // TODO : Correct Exception need to be thrown
     ProvidedServiceItem getProvidedServiceItemById(long id) throws Exception;
 
-    ProvidedServiceItem createProvidedServiceItem(ProvidedServiceItem item) throws IOException;
 
     // TODO : Correct Exception 
     void deleteProvidedServiceItem(long id) throws Exception;
