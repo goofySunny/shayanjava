@@ -26,15 +26,15 @@ public class ProtectedProvidedServiceController {
 
     @GetMapping()
     public ModelAndView providedServiceDash() {
-        ModelAndView mv = new ModelAndView("showcase-dash");
-        mv.addObject("showcaseItems", service.getAllProvidedServiceItems());
+        ModelAndView mv = new ModelAndView("service-dash");
+        mv.addObject("serviceItem", service.getAllProvidedServiceItems());
         return mv;
     }
 
     @GetMapping("/add")
     public String createProvidedServiceItem(Model model) {
-        model.addAttribute("showcaseItem", new ShowcaseItem());
-        return "showcase-addition";
+        model.addAttribute("serviceItem", new ShowcaseItem());
+        return "service-addition";
     }
 
     @PostMapping("/upload")
@@ -49,7 +49,7 @@ public class ProtectedProvidedServiceController {
         service.createProvidedServiceItem(item);
 
         model.addAttribute("message", "Showcase Item added");
-        return "redirect:/admin/showcase/add";
+        return "redirect:/admin/service/add";
     }
 
     @PostMapping("/edit/{id}")
@@ -58,26 +58,26 @@ public class ProtectedProvidedServiceController {
 
         if (result.hasErrors()) {
             model.addAttribute("message", "Something went wrong");
-            return "redirect:/admin/showcase/edit/" + id;
+            return "redirect:/admin/service/edit/" + id;
         }
 
         try {
             service.updateProvidedServiceItem(id, item);
         } catch (Exception ex) {
             model.addAttribute("message", "Something went wrong");
-            return "redirect:/admin/showcase/edit/" + id;
+            return "redirect:/admin/service/edit/" + id;
         }
 
-        model.addAttribute("successMessage", "Showcase item successfully modified");
-        return "redirect:/admin/showcase";
+        model.addAttribute("successMessage", "Service item successfully modified");
+        return "redirect:/admin/service";
     }
 
     @GetMapping("/edit/{id}")
     public String editProvidedServiceItem(@PathVariable long id, Model model) throws Exception {
         ProvidedServiceItem item = service.getProvidedServiceItemById(id);
-        model.addAttribute("showcaseItem", item);
-        model.addAttribute("successMessage", "Showcase was successfully modified");
-        return "showcase-edit";
+        model.addAttribute("serviceItem", item);
+        model.addAttribute("successMessage", "Service was successfully modified");
+        return "service-edit";
     }
 
 }

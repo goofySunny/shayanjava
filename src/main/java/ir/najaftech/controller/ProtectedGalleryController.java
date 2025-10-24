@@ -25,7 +25,7 @@ public class ProtectedGalleryController {
 
     @GetMapping()
     public ModelAndView showcaseDash() {
-        ModelAndView mv = new ModelAndView("showcase-dash");
+        ModelAndView mv = new ModelAndView("gallery-dash");
         mv.addObject("GalleryItems", service.getAllGalleryItems());
         return mv;
     }
@@ -33,7 +33,7 @@ public class ProtectedGalleryController {
     @GetMapping("/add")
     public String createShowcase(Model model) {
         model.addAttribute("GalleryItem", new GalleryItem());
-        return "showcase-addition";
+        return "gallery-addition";
     }
 
     @PostMapping("/upload")
@@ -47,8 +47,8 @@ public class ProtectedGalleryController {
 
         service.createGalleryItem(item);
 
-        model.addAttribute("message", "Showcase Item added");
-        return "redirect:/admin/showcase/add";
+        model.addAttribute("message", "Gallery Item added");
+        return "redirect:/admin/gallery/add";
     }
 
     @PostMapping("/edit/{id}")
@@ -57,24 +57,24 @@ public class ProtectedGalleryController {
 
         if (result.hasErrors()) {
             model.addAttribute("message", "Something went wrong");
-            return "redirect:/admin/showcase/edit/" + id;
+            return "redirect:/admin/gallery/edit/" + id;
         }
 
         try {
             service.updateGalleryItem(id, item);
         } catch (Exception ex) {
             model.addAttribute("message", "Something went wrong");
-            return "redirect:/admin/showcase/edit/" + id;
+            return "redirect:/admin/gallery/edit/" + id;
         }
 
-        model.addAttribute("successMessage", "Showcase item successfully modified");
-        return "redirect:/admin/showcase";
+        model.addAttribute("successMessage", "Gallery item successfully modified");
+        return "redirect:/admin/gallery";
     }
 
     @GetMapping("/edit/{id}")
     public String editShowcase(@PathVariable long id, Model model) throws Exception {
         GalleryItem item = service.getGalleryItemById(id);
-        model.addAttribute("GalleryItem", item);
+        model.addAttribute("galleryItem", item);
         model.addAttribute("successMessage", "Showcase was successfully modified");
         return "showcase-edit";
     }
