@@ -18,68 +18,14 @@
   <div class="content-parent">
     <div class="content-slider" id="slider">
       <div class="content">
-        <div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div>
-        <div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div><div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div><div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div><div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div><div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div>
-        <div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div>
-        <div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div><div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div><div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div>
-        <div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div>
-        <div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div>
-        <div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div>
-        <div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div>
-        <div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div>
-        <div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div>
-        <div class="content-item">
-          <img src="/images/person.svg" alt="">
-          <p>This is a Example</p>
-        </div>
+        <c:forEach items="${providedServiceItems}" var="service">
+          <div class="content-item">
+            <img src="/service/images/${service.id}" alt="Service Image">
+            <p>
+              ${service.title}
+            </p>
+          </div>
+        </c:forEach>
       </div>
     </div>
 
@@ -120,32 +66,14 @@
       <a href="">بیشتر ></a>
     </div>
     <div class="gallery-slider">
-    
-      <div class="gallery-item">
-        <img src="/images/photo_2_2025-09-15_14-33-23.jpg" alt="">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis blandit. Praesent
-          vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla
-          porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus
-          ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis
-          a volutpat.</p>
-      </div>
-
-      <div class="gallery-item">
-        <img src="/images/photo_2_2025-09-15_14-33-23.jpg" alt="">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis blandit. Praesent
-          vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla
-          porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus
-          ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis
-          a volutpat.</p>
-      </div>
-      <div class="gallery-item">
-        <img src="/images/photo_2_2025-09-15_14-33-23.jpg" alt="">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis blandit. Praesent
-          vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla
-          porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus
-          ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis
-          a volutpat.</p>
-      </div>
+      <c:forEach items="${galleryItems}" var="gallery">
+        <div class="gallery-item">
+          <img src="/gallery/images/${gallery.id}" alt="Gallery Image">
+          <p>
+            ${gallery.desc}
+          </p>
+        </div>
+      </c:forEach>
     </div>
   </section>
   <!-- End of Photo Gallery -->

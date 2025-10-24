@@ -33,6 +33,8 @@ public class MainController {
     @GetMapping
     public String home(Model model) {
         model.addAttribute("showcaseItems", showcaseService.getAllShowcaseItems());
+        model.addAttribute("providedServiceItems", providedServiceItemService.getAllActiveProvidedServiceItems());
+        model.addAttribute("galleryItems", galleryService.getAllActiveGalleryItems());
 
         return "index";
     }
@@ -98,5 +100,4 @@ public class MainController {
         return "login";
     }
     
-       
 }
