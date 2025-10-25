@@ -12,7 +12,7 @@
 </head>
 <body>
     <%@ include file="common/admin-header.jspf" %>
-    <h1>Manage showcase items below</h1>
+    <h1>Manage gallery items below</h1>
 
     <table>
       <thead>
@@ -35,13 +35,13 @@
         </tr>
       </thead>
       <tbody>
-        <c:forEach items="${showcaseItems}" var="showcase">
+        <c:forEach items="${galleryItems}" var="gallery">
           <tr>
-            <td><img src="/showcase/images/${showcase.id}" alt="Showcase image"></td>
-            <td>${showcase.title}</td>
-            <td>${showcase.desc}</td>
-            <td>${showcase.active ? "True" : "False"}</td>
-            <td><a href="/admin/showcase/edit/${showcase.id}">Edit</a></td>
+            <td><img src="/gallery/images/${gallery.id}" alt="Gallery image"></td>
+            <td>${gallery.title}</td>
+            <td>${gallery.desc}</td>
+            <td>${gallery.active ? "True" : "False"}</td>
+            <td><a href="/admin/gallery/edit/${gallery.id}">Edit</a></td>
           </tr>
         </c:forEach >
       </tbody>

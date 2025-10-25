@@ -12,7 +12,7 @@
 </head>
 <body>
     <%@ include file="common/admin-header.jspf" %>
-    <h1>Add new Showcase item</h1>
+    <h1>Add new Service item</h1>
     <c:if test="${not empty message}">
         <div class="alert alert-info">
             <c:out value="${message}"/>
@@ -21,7 +21,7 @@
     
     <form:form method="POST" 
            action="upload" 
-           modelAttribute="showcaseItem"
+           modelAttribute="serviceItem"
            enctype="multipart/form-data">
     
         <!-- Title Field -->
@@ -29,13 +29,6 @@
             <form:label path="title">Title:</form:label>
             <form:input path="title" type="text" class="form-control" />
             <form:errors path="title" cssClass="error" />
-        </div>
-        
-        <!-- Description Field -->
-        <div class="form-group">
-            <form:label path="desc">Description:</form:label>
-            <form:textarea path="desc" class="form-control" rows="3" />
-            <form:errors path="desc" cssClass="error" />
         </div>
 
         <!-- Featured Checkbox -->

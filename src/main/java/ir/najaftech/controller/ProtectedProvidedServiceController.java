@@ -27,7 +27,7 @@ public class ProtectedProvidedServiceController {
     @GetMapping()
     public ModelAndView providedServiceDash() {
         ModelAndView mv = new ModelAndView("service-dash");
-        mv.addObject("serviceItem", service.getAllProvidedServiceItems());
+        mv.addObject("serviceItems", service.getAllProvidedServiceItems());
         return mv;
     }
 

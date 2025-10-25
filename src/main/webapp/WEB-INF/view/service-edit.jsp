@@ -6,13 +6,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shayan Admin - Add</title>
+  <title>Shayan Admin - Edit</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/admin-panel.css">
 </head>
 <body>
     <%@ include file="common/admin-header.jspf" %>
-    <h1>Add new Showcase item</h1>
+    <h1>Add new Service item</h1>
     <c:if test="${not empty message}">
         <div class="alert alert-info">
             <c:out value="${message}"/>
@@ -29,15 +29,8 @@
             <form:input path="title" type="text" class="form-control" />
             <form:errors path="title" cssClass="error" />
         </div>
-        
-        <!-- Description Field -->
-        <div class="form-group">
-            <form:label path="desc">Description:</form:label>
-            <form:textarea path="desc" class="form-control" rows="3" />
-            <form:errors path="desc" cssClass="error" />
-        </div>
 
-        <!-- Featured Checkbox -->
+        <!-- Active Checkbox -->
         <div class="form-group">
             <div class="form-check">
                 <form:checkbox path="active" class="form-check-input" />
