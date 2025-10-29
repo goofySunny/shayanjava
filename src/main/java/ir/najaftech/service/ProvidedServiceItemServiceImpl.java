@@ -49,8 +49,9 @@ public class ProvidedServiceItemServiceImpl implements ProvidedServiceItemServic
 
     @Override
     public ProvidedServiceItem updateProvidedServiceItem(long id, ProvidedServiceItem item) throws Exception {
+        ProvidedServiceItem oldItem = repo.findById(id).orElseThrow(() -> new Exception("Not Found"));
         item.setId(id);
-
+        item.setImage(oldItem.getImage());
         return repo.save(item);
     }
 

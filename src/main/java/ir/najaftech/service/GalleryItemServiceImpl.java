@@ -49,8 +49,9 @@ public class GalleryItemServiceImpl implements GalleryItemService {
 
     @Override
     public GalleryItem updateGalleryItem(long id, GalleryItem item) throws Exception {
-        repo.findById(id).orElseThrow(() -> new Exception("Not found"));
+        GalleryItem oldItem = repo.findById(id).orElseThrow(() -> new Exception("Not found"));
         item.setId(id);
+        item.setImage(oldItem.getImage());
         return repo.save(item);
     }
 
