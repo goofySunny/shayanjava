@@ -14,14 +14,14 @@
   /* Required color variables for the .light class and .dark class later */
   /* Very important to add the colors as variables here or else its gonna become painful */
   --bg-color: #e7e707;
-  --bg-secondary: #adad21; 
+  --bg-secondary: #adad21;
   --text-primary: #333;
   --text-secondary: #d6d1d1;
 }
 
 .dark {
   --bg-color: #e7e707;
-  --bg-secondary: #adad21; 
+  --bg-secondary: #adad21;
   --text-primary: #333;
   --text-secondary: #d6d1d1;
 }
@@ -238,6 +238,13 @@ body {
     padding: 0.5rem;
     z-index: 0;
 
+    p {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+    }
+
     img {
       right: 0;
       top: 0;
@@ -327,7 +334,7 @@ body {
   overflow-x: hidden;
 }
 
-.footer img{
+.footer img {
   width: 16px;
 }
 

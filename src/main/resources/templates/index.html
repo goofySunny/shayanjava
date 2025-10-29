@@ -16,31 +16,153 @@
   <div class="content-parent">
     <div class="content-slider" id="slider">
       <div class="content">
-        <div th:each="service : ${providedServiceItems}">
+        <!-- این قسمت مربوط به پروژه اصلی هست و آیتم ها رو از دیتابیس میکشه بیرون -->
+        <!-- <div th:each="service : ${providedServiceItems}">
           <div class="content-item">
             <img th:src="'/service/images/' + ${service.id}" alt="Service Image">
             <p th:text="${item.title}">
               title
             </p>
           </div>
-        </div>
-      </div>
-    </div>
+        </div> -->
+        <!-- پایان -->
 
-    <div class="content-controls">
-      <button id="left">
-        <img src="/images/arrow-left.svg" alt="">
-      </button>
-      <button id="right">
-        <img src="/images/arrow-left.svg" alt="">
-      </button>
+
+        <!-- این قسمت برای توسعه راحت تر حذف شده و در برنامه نهایی وجود خواهد داشت -->
+        <div class="content-item">
+          <img src="/images/q.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/w.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/e.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/r.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/q.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/w.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/e.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/r.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/q.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/w.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/e.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/r.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+        <div class="content-item">
+          <img src="/images/q.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/w.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/e.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <div class="content-item">
+          <img src="/images/r.svg" alt="Service Image">
+          <p>
+            Lorem
+          </p>
+        </div>
+
+        <!-- پایان -->
+
+      </div>
+
     </div>
+  </div>
+
+  <div class="content-controls">
+    <button id="left">
+      <img src="/images/arrow-left.svg" alt="">
+    </button>
+    <button id="right">
+      <img src="/images/arrow-left.svg" alt="">
+    </button>
+  </div>
   </div>
   <!-- End of Content slide -->
 
   <!-- Hero Section -->
   <section id="hero" class="hero">
-    <div th:each="showcase : ${showcaseItems}">
+
+    <!-- این قسمت برای توسعه راحت تر حذف شده و در برنامه نهایی وجود خواهد داشت -->
+    <!-- <div th:each="showcase : ${showcaseItems}">
       <div class="hero-item active">
         <div class="image">
           <a href="/showcase/${showcase.id}">
@@ -52,7 +174,174 @@
             desc
           </p>
         </div>
+      </div> -->
+    <!-- پایان -->
+
+    <!-- این قسمت فقط برای توسعه راحت تر ساخته شده و در برنامه نهایی وحود ندارد -->
+    <div class="hero-item">
+      <div class="image">
+        <a>
+          <img src="/images/1.jpg" alt="Hero Item">
+        </a>
       </div>
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+        </p>
+      </div>
+    </div>
+
+    <div class="hero-item active">
+      <div class="image">
+        <a>
+          <img src="/images/2.jpg" alt="Hero Item">
+        </a>
+      </div>
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+        </p>
+      </div>
+    </div>
+
+    <div class="hero-item">
+      <div class="image">
+        <a>
+          <img src="/images/3.jpg" alt="Hero Item">
+        </a>
+      </div>
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+        </p>
+      </div>
+    </div>
+
+    <div class="hero-item">
+      <div class="image">
+        <a>
+          <img src="/images/4.jpg" alt="Hero Item">
+        </a>
+      </div>
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
+          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
+          himenaeos.
+        </p>
+      </div>
+    </div>
+    <!-- پایان -->
     </div>
   </section>
   <!-- End of Hero Section -->
@@ -64,20 +353,73 @@
       <a href="">بیشتر ></a>
     </div>
     <div class="gallery-slider">
-      <div th:each="gallery : ${galleryItems}">
+      <!-- این قسمت برای توسعه راحت تر حذف شده و در برنامه نهایی وجود خواهد داشت -->
+      <!-- <div th:each="gallery : ${galleryItems}">
         <div class="gallery-item">
           <img th:src="'/gallery/images/' + ${gallery.id}" alt="Gallery Image">
           <p th:text="${gallery.desc}">
             desc
           </p>
         </div>
-      </div>
+      </div> -->
+      <!-- پایان -->
+
+      <!-- توسعه راخت تر -->
+       <div class="gallery-item">
+          <img src="/images/1.jpg" alt="Gallery Image">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
+          </p>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="/images/2.jpg" alt="Gallery Image">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
+          </p>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="/images/3.jpg" alt="Gallery Image">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
+          </p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/4.jpg" alt="Gallery Image">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
+          </p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/5.jpg" alt="Gallery Image">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
+          </p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/6.jpg" alt="Gallery Image">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
+          </p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/1.jpg" alt="Gallery Image">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
+          </p>
+        </div>
+      <!-- پایان -->
     </div>
   </section>
   <!-- End of Photo Gallery -->
 
   <div th:replace="fragments/footer"></div>
-    <script src="/js/loading.js"></script>
+  <script src="/js/loading.js"></script>
 </body>
 
 </html>
