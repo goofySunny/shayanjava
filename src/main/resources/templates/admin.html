@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shayan Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin-panel.css">
+
+  <style>
+    .admin {
+        margin: 1rem auto;
+        width: 80%;
+        text-align: center;
+    }
+    .admin-content {
+        margin-top: 2rem;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+    }
+    .content-card {
+        font-size: xx-large;
+        margin: 0 1rem;
+        padding: 0.5rem;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+    <div th:replace="fragments/admin-header"></div>
+
+    <div class="admin">
+        <h1 dir="rtl">وب سایت را مدیریت کنید!</h1>
+        <div class="admin-content">
+            <div class="content-card">
+                <a href="/admin/showcase">
+                    <h6>بنر اصلی</h6>
+                </a>
+            </div>
+            <div class="content-card">
+                <a href="/admin/service">
+                    <h6>سرویس ها</h6>
+                </a>
+            </div>
+            <div class="content-card">
+                <a href="/admin/gallery">
+                    <h6>گالری محصولات</h6>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/loading.js"></script>
+    <script src="/js/admin-header.js"></script>
+</body>
