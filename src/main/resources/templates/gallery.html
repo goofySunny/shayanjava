@@ -10,14 +10,9 @@
 </head>
 <body>
     <div th:replace="fragments/main-header"></div>
-    <div class="main-container">
-        <img src="/showcase/images/${showcase.id}" alt="واقعه غیر منتظر اتفاق افتاد...">
-        <div>
-          <h6>${showcase.title}</h6>
-          <hr>
-          <p>${showcase.desc}</p>
-        </div>
-    </div>
+
+    <!-- این قسمت قراره همه آیتم های های گالری رو نشون کاربر بده -->
+
     <div th:replace="fragments/footer"></div>
     <script src="/js/loading.js"></script>
 </body>

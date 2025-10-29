@@ -37,3 +37,16 @@ localhost:8080
 ```
 <script src="/js/{اسم فایل}"> 
 ```
+
+
+### ازت چیکار میخوام؟؟
+میخوام فایل هایی ک کاربر میخواد مستقیم باهاشون در ارتباط باشه رو هرچه زودتر درست بکنی و قسمت های ادمین رو بعدا هروقت وقت شد درست میکنم چون اون فایل های مهمی نیستن از نظر ظاهری فقط کار کردنشون مهمه که کار میکنن   
+فولدر هایی که ازت میخوام لطف کنی روشون کار کنی   
+
+> src/main/resources/static/css/style.css   
+> src/main/resources/static/js   
+> src/main/resources/templates/index.html   
+> src/main/resources/templates/gallery.html   
+> src/main/resources/templates/showcase.html   
+
+وقتی این فایل ها خوشگل بنظر بیان میتونم سرور رو اوکی کنم تا برنامه رو ران کنه و ایشالا بی حرف پیش  تمومش کنیم
