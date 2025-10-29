@@ -1,18 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shayan Admin - Add</title>
+  <title>Shayan Admin - Edit</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/admin-panel.css">
 </head>
 <body>
     <%@ include file="common/admin-header.jspf" %>
-    <h1>Add new Showcase item</h1>
+    <h1>Add new Gallery item</h1>
     <c:if test="${not empty message}">
         <div class="alert alert-info">
             <c:out value="${message}"/>
@@ -21,7 +21,7 @@
     
     <form:form method="POST"
            action="/admin/showcase/edit/${id}"
-           modelAttribute="showcaseItem">
+           modelAttribute="galleryItem">
     
         <!-- Title Field -->
         <div class="form-group">
