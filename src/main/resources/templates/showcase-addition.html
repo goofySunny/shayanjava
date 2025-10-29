@@ -11,40 +11,37 @@
 <body>
     <div th:replace="fragments/admin-header"></div>
     <h1>Add new Showcase item</h1>
-    <c:if test="${not empty message}">
+    <!-- <c:if test="*{not empty message}">
         <div class="alert alert-info">
-            <c:out value="${message}"/>
+            <c:out value="*{message}"/>
         </div>
-    </c:if>
+    </c:if> -->
     
-    <form:form method="POST" 
-           action="upload" 
-           modelAttribute="showcaseItem"
+    <form method="POST" 
+           th:action="@{upload}" 
+           th:object="${showcaseItem}"
            enctype="multipart/form-data">
     
         <!-- Title Field -->
         <div class="form-group">
-            <form:label path="title">Title:</form:label>
-            <form:input path="title" type="text" class="form-control" />
-            <form:errors path="title" cssClass="error" />
+            <label th:field="*{title}">Title:</label>
+            <input th:field="*{title}" type="text" class="form-control" />
         </div>
         
         <!-- Description Field -->
         <div class="form-group">
-            <form:label path="desc">Description:</form:label>
-            <form:textarea path="desc" class="form-control" rows="3" />
-            <form:errors path="desc" cssClass="error" />
+            <label th:field="*{desc}">Description:</label>
+            <textarea th:field="*{desc}" class="form-control" rows="3" />
         </div>
 
         <!-- Featured Checkbox -->
         <div class="form-group">
             <div class="form-check">
-                <form:checkbox path="active" class="form-check-input" />
-                <form:label path="active" class="form-check-label">
+                <input type="checkbox" th:field="*{active}" class="form-check-input" />
+                <label th:field="*{active}" class="form-check-label">
                     Activate this item
-                </form:label>
+                </label>
             </div>
-            <form:errors path="active" cssClass="error" />
         </div>
         
         <!-- File Field (Note: Spring form tags don't have file input, use regular HTML) -->
@@ -54,7 +51,7 @@
         </div>
         
         <button type="submit" class="btn btn-primary">Submit</button>
-    </form:form>
+    </form>
 
     <script src="/js/loading.js"></script>
 </body>

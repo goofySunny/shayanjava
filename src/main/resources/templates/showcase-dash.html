@@ -33,15 +33,15 @@
         </tr>
       </thead>
       <tbody>
-        <c:forEach items="${showcaseItems}" var="showcase">
+        <div th:each="showcase : ${showcaseItems}">
           <tr>
             <td><img src="/showcase/images/${showcase.id}" alt="Showcase image"></td>
-            <td>${showcase.title}</td>
-            <td>${showcase.desc}</td>
-            <td>${showcase.active ? "True" : "False"}</td>
-            <td><a href="/admin/showcase/edit/${showcase.id}">Edit</a></td>
+            <td th:text="${showcase.title}"></td>
+            <td th:text="${showcase.desc}"></td>
+            <td th:text="${showcase.active ? 'True' : 'False'}"></td>
+            <td><a th:href="@{/admin/showcase/edit/{id}(id=${showcase.id})}">Edit</a></td>
           </tr>
-        </c:forEach >
+        </div>
       </tbody>
     </table>
     

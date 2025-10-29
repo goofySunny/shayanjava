@@ -30,14 +30,14 @@
         </tr>
       </thead>
       <tbody>
-        <c:forEach items="${serviceItems}" var="service">
+        <div th:each="service : ${serviceItems}">
           <tr>
             <td><img src="/service/images/${service.id}" alt="service image"></td>
-            <td>${service.title}</td>
-            <td>${service.active ? "True" : "False"}</td>
-            <td><a href="/admin/service/edit/${service.id}">Edit</a></td>
+            <td th:text="${service.title}"></td>
+            <td th:text="${service.active ? 'True' : 'False'}"></td>
+            <td><a th:href="@{/admin/service/edit/{id}(id=${service.id})}">Edit</a></td>
           </tr>
-        </c:forEach >
+        </div>
       </tbody>
     </table>
     
