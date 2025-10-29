@@ -1,5 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<!-- Loader -->
+<div th:fragment="admin-header">
+  <!-- Loader -->
   <div id="loader" class="loading">
     <div class="spinner"></div>
   </div>
@@ -17,7 +17,7 @@
       <div class="logo">
         <button>
           <img src="/images/logo.png" alt="Shayan">
-          <h2>Shayan Box</h2>
+          <h2>Management</h2>
         </button>
       </div>
       <!-- End of Logo -->
@@ -31,11 +31,13 @@
     </div>
     <div>
       <!-- Search Bar -->
-      <div class="search-container">
-        <img src="/images/search.svg" alt="">
-        <input type="text" placeholder="جستجوی محصولات">
+      <div class="quick-access">
+        <a href="/admin/showcase/add">Add New</a>
+        <a href="/">Home</a>
+        <a href="/admin/showcase">Dashboard</a>
       </div>
       <!-- End of Search Bar -->
     </div>
   </nav>
   <!-- End of Nav Bar -->
+</div>

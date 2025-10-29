@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/css/admin-panel.css">
 </head>
 <body>
-    <%@ include file="common/header.jspf" %>
+    <div th:replace="fragments/main-header"></div>
     <div class="main-container">
         <img src="/showcase/images/${showcase.id}" alt="واقعه غیر منتظر اتفاق افتاد...">
         <div>
@@ -20,5 +20,6 @@
           <p>${showcase.desc}</p>
         </div>
     </div>
+    <div th:replace="fragments/footer"></div>
     <script src="/js/loading.js"></script>
 </body>

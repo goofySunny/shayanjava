@@ -8,6 +8,7 @@ What Needs to Change:
 1. Dependencies (Quick - 2 minutes)
 xml
 
+```
 <!-- Remove JSP dependencies -->
 <!-- <dependency>
     <groupId>org.apache.tomcat.embed</groupId>
@@ -23,6 +24,7 @@ xml
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-thymeleaf</artifactId>
 </dependency>
+```
 
 2. File Extension (Quick - 5 minutes)
 
@@ -36,6 +38,7 @@ JSP → Thymeleaf Examples:
 JSP:
 jsp
 
+```
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <h1>Welcome ${user.name}</h1>
 <c:if test="${not empty user}">
@@ -44,10 +47,12 @@ jsp
 <c:forEach items="${users}" var="user">
     <div>${user.name}</div>
 </c:forEach>
+```
 
 Thymeleaf:
 html
 
+```
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <h1 th:text="'Welcome ' + ${user.name}">Welcome User</h1>
@@ -57,15 +62,18 @@ html
 <div th:each="user : ${users}">
     <span th:text="${user.name}">User Name</span>
 </div>
+```
 
 4. Common Conversions:
 JSP	Thymeleaf
 ${user.name}	th:text="${user.name}"
+```
 <c:if test="${condition}">	th:if="${condition}"
 <c:forEach items="${list}">	th:each="item : ${list}"
 <form action="/submit">	<form th:action="@{/submit}">
 <a href="/page">	<a th:href="@{/page}">
 <input value="${val}">	<input th:value="${val}">
+```
 5. What Stays the Same:
 
     Controller methods - no changes needed
@@ -116,6 +124,7 @@ find . -name "*.jsp" -exec sh -c 'mv "$1" "${1%.jsp}.html"' _ {} \;
 Phase 4: Update controllers if needed (minimal)
 java
 
+```
 // Usually no changes needed!
 @Controller
 public class MyController {
@@ -126,6 +135,7 @@ public class MyController {
         return "page"; // Looks for page.html now
     }
 }
+```
 
 Quick Test - Convert one page:
 
@@ -134,3 +144,15 @@ Take your simplest JSP page and try converting it. If it takes less than 30 minu
 Want me to help you convert a specific JSP page to see the actual effort? Share a snippet of your current JSP and I'll show you the Thymeleaf equivalent.
 
 The investment is usually worth it for the long-term maintainability and better Spring Boot compatibility!
+
+
+### Header Files Include: 
+```
+<div th:replace="fragments/main-header"></div>
+<div th:replace="fragments/admin-header"></div>
+```
+
+# Footer Files Include:
+```
+<div th:replace="fragments/footer"></div>
+```
