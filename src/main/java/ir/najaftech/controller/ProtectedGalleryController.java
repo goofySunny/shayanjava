@@ -24,15 +24,15 @@ public class ProtectedGalleryController {
     private final GalleryItemService service;
 
     @GetMapping()
-    public ModelAndView showcaseDash() {
+    public ModelAndView galleryDash() {
         ModelAndView mv = new ModelAndView("gallery-dash");
-        mv.addObject("GalleryItems", service.getAllGalleryItems());
+        mv.addObject("galleryItems", service.getAllGalleryItems());
         return mv;
     }
 
     @GetMapping("/add")
-    public String createShowcase(Model model) {
-        model.addAttribute("GalleryItem", new GalleryItem());
+    public String createGalleryItem(Model model) {
+        model.addAttribute("galleryItem", new GalleryItem());
         return "gallery-addition";
     }
 
@@ -72,11 +72,11 @@ public class ProtectedGalleryController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editShowcase(@PathVariable long id, Model model) throws Exception {
+    public String editGalleryItem(@PathVariable long id, Model model) throws Exception {
         GalleryItem item = service.getGalleryItemById(id);
         model.addAttribute("galleryItem", item);
-        model.addAttribute("successMessage", "Showcase was successfully modified");
-        return "showcase-edit";
+        model.addAttribute("successMessage", "Gallery Item was successfully modified");
+        return "gallery-edit";
     }
 
 }

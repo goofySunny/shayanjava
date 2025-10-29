@@ -12,7 +12,7 @@
 </head>
 <body>
     <%@ include file="common/admin-header.jspf" %>
-    <h1>Manage showcase items below</h1>
+    <h1>Manage service items below</h1>
 
     <table>
       <thead>
@@ -24,9 +24,6 @@
             Title
           </th>
           <th>
-            Full description
-          </th>
-          <th>
             Active
           </th>
           <th>
@@ -35,13 +32,12 @@
         </tr>
       </thead>
       <tbody>
-        <c:forEach items="${showcaseItems}" var="showcase">
+        <c:forEach items="${serviceItems}" var="service">
           <tr>
-            <td><img src="/showcase/images/${showcase.id}" alt="Showcase image"></td>
-            <td>${showcase.title}</td>
-            <td>${showcase.desc}</td>
-            <td>${showcase.active ? "True" : "False"}</td>
-            <td><a href="/admin/showcase/edit/${showcase.id}">Edit</a></td>
+            <td><img src="/service/images/${service.id}" alt="service image"></td>
+            <td>${service.title}</td>
+            <td>${service.active ? "True" : "False"}</td>
+            <td><a href="/admin/service/edit/${service.id}">Edit</a></td>
           </tr>
         </c:forEach >
       </tbody>

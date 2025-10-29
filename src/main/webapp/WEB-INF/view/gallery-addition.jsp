@@ -12,7 +12,7 @@
 </head>
 <body>
     <%@ include file="common/admin-header.jspf" %>
-    <h1>Add new Showcase item</h1>
+    <h1>Add new Gallery item</h1>
     <c:if test="${not empty message}">
         <div class="alert alert-info">
             <c:out value="${message}"/>
@@ -21,7 +21,7 @@
     
     <form:form method="POST" 
            action="upload" 
-           modelAttribute="showcaseItem"
+           modelAttribute="galleryItem"
            enctype="multipart/form-data">
     
         <!-- Title Field -->
