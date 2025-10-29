@@ -259,8 +259,12 @@ body {
 
 .hero-item.active {
   opacity: 1;
-  pointer-events: alla;
+  pointer-events: all;
   transform: translatex(0px);
+
+  a {
+    cursor: pointer;
+  }
 }
 
 .hero-item.deactive {
