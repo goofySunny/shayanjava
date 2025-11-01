@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ir.najaftech.model.GalleryItem;
 import ir.najaftech.service.GalleryItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -37,17 +39,23 @@ public class ProtectedGalleryController {
     }
 
     @PostMapping("/upload")
-    public String uploadNewGalleryItem(@ModelAttribute GalleryItem item, Model model, BindingResult result)
+    public String uploadNewGalleryItem(@ModelAttribute GalleryItem item, RedirectAttributes redirectAttributes,
+            BindingResult result)
             throws IOException {
 
         if (result.hasErrors()) {
-            model.addAttribute("message", "Something went wrong");
+            redirectAttributes.addFlashAttribute("showAlert", true);
+            redirectAttributes.addFlashAttribute("alertTitle", "Fail!");
+            redirectAttributes.addFlashAttribute("alertType", "error");
+            redirectAttributes.addFlashAttribute("alertMessage", "Something went wrong!");
             return "redirect:/add";
         }
 
         service.createGalleryItem(item);
-
-        model.addAttribute("message", "Gallery Item added");
+        redirectAttributes.addFlashAttribute("showAlert", true);
+        redirectAttributes.addFlashAttribute("alertTitle", "Success");
+        redirectAttributes.addFlashAttribute("alertType", "success");
+        redirectAttributes.addFlashAttribute("alertMessage", "Gallery Item Added");
         return "redirect:/admin/gallery/add";
     }
 
@@ -56,7 +64,9 @@ public class ProtectedGalleryController {
             BindingResult result) {
 
         if (result.hasErrors()) {
-            model.addAttribute("message", "Something went wrong");
+            model.addAttribute("showAlert", true);
+            model.addAttribute("alertTitle", "");
+            model.addAttribute("alertMessage", "");
             return "redirect:/admin/gallery/edit/" + id;
         }
 
@@ -77,6 +87,18 @@ public class ProtectedGalleryController {
         model.addAttribute("galleryItem", item);
         model.addAttribute("successMessage", "Gallery Item was successfully modified");
         return "gallery-edit";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteGalleryItem(@PathVariable long id, RedirectAttributes redirectAttributes) throws Exception {
+        service.deleteGalleryItem(id);
+
+        redirectAttributes.addFlashAttribute("showAlert", true);
+        redirectAttributes.addFlashAttribute("alertTitle", "Success!");
+        redirectAttributes.addFlashAttribute("alertType", "success");
+        redirectAttributes.addFlashAttribute("alertMessage", "Gallery Item Deleted Successfully");
+
+        return "redirect:/admin/gallery";
     }
 
 }

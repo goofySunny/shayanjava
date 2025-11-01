@@ -2,33 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shayan Admin - Add</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/admin-panel.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shayan Admin - Add</title>
+    <link rel="stylesheet" href="/css/alerts.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin-panel.css">
 </head>
 
 <body th:class="${preferredTheme}">
     <div th:replace="fragments/admin-header"></div>
     <h1>Add new Gallery item</h1>
-    <!-- <c:if test="${not empty message}">
-        <div class="alert alert-info">
-            <c:out value="${message}"/>
+    <!-- Alerts -->
+    <div class="alert" th:classappend="${alertType}" th:if="${showAlert}" id="alert">
+        <button class="alert-close">&times;</button>
+        <strong th:text="${alertTitle}">Success!</strong>
+        <span th:text="${alertMessage}">Your action was completed successfully.</span>
+        <div class="progress-bar">
+            <div class="progress" id="alertProgress"></div>
         </div>
-    </c:if> -->
-    
-    <form method="POST" 
-           th:action="@{upload}" 
-           th:object="${galleryItem}"
-           enctype="multipart/form-data">
-    
+    </div>
+    <!-- End of Alerts -->
+
+    <form method="POST" th:action="@{upload}" th:object="${galleryItem}" enctype="multipart/form-data">
+
         <!-- Title Field -->
         <div class="form-group">
             <label path="title">Title:</label>
             <input th:field="*{title}" type="text" class="form-control" />
         </div>
-        
+
         <!-- Description Field -->
         <div class="form-group">
             <label th:field="*{desc}">Description:</label>
@@ -38,22 +41,23 @@
         <!-- Featured Checkbox -->
         <div class="form-group">
             <div class="form-check">
-                <label  class="form-check-label">
+                <label class="form-check-label">
                     Activate this item
                 </label>
                 <input type="checkbox" th:field="*{active}" class="form-check-input" />
             </div>
         </div>
-        
+
         <!-- File Field (Note: Spring form tags don't have file input, use regular HTML) -->
         <div class="form-group">
             <label for="file">Upload Image:</label>
             <input type="file" id="file" name="file" accept="image/*" required />
         </div>
-        
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
     <script src="/js/loading.js"></script>
+    <script src="/js/alerts.js"></script>
     <script src="/js/admin-header.js"></script>
 </body>

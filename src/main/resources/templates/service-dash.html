@@ -10,9 +10,11 @@
 </head>
 
 <body th:class="${preferredTheme}">
-    <div th:replace="fragments/admin-header"></div>
-    <h1>Manage service items below</h1>
+  <div th:replace="fragments/admin-header"></div>
+  <h1>Manage service items below</h1>
 
+
+  <div class="table-parent">
     <table>
       <thead>
         <tr>
@@ -36,14 +38,19 @@
             <td><img src="/service/images/${service.id}" alt="service image"></td>
             <td th:text="${service.title}"></td>
             <td th:text="${service.active ? 'True' : 'False'}"></td>
-            <td><a th:href="@{/admin/service/edit/{id}(id=${service.id})}">Edit</a></td>
+            <td><a class="edit" th:href="@{/admin/service/edit/{id}(id=${service.id})}">Edit</a></td>
+            <td><a class="delete" th:href="@{/admin/service/delete/{id}(id=${service.id})}">Delete</a></td>
           </tr>
         </div>
       </tbody>
     </table>
 
-    <a href="/admin/service/add">Add New</a>
-    
-    <script src="/js/loading.js"></script>
-    <script src="/js/admin-header.js"></script>
+    <a class="add" href="/admin/service/add">Add New</a>
+  
+  
+  </div>
+
+
+  <script src="/js/loading.js"></script>
+  <script src="/js/admin-header.js"></script>
 </body>

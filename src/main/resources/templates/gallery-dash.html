@@ -6,13 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shayan Admin</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/alerts.css">
   <link rel="stylesheet" href="/css/admin-panel.css">
 </head>
 
 <body th:class="${preferredTheme}">
-    <div th:replace="fragments/admin-header"></div>
-    <h1>Manage gallery items below</h1>
+  <div th:replace="fragments/admin-header"></div>
 
+  <!-- Alerts -->
+  <div class="alert" th:classappend="${alertType}" th:if="${showAlert}" id="alert">
+    <button class="alert-close">&times;</button>
+    <strong th:text="${alertTitle}">Success!</strong>
+    <span th:text="${alertMessage}">Your action was completed successfully.</span>
+    <div class="progress-bar">
+      <div class="progress" id="alertProgress"></div>
+    </div>
+  </div>
+  <!-- End of Alerts -->
+
+  <h1>Manage gallery items below</h1>
+
+  <div class="table-parent">
     <table>
       <thead>
         <tr>
@@ -31,6 +45,9 @@
           <th>
             Edit
           </th>
+          <th>
+            Delete
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -40,14 +57,17 @@
             <td th:text="${gallery.title}"></td>
             <td th:text="${gallery.desc}"></td>
             <td th:text="${gallery.active ? 'True' : 'False'}"></td>
-            <td><a th:href="@{'/admin/gallery/edit/' + ${gallery.id}}">Edit</a></td>
+            <td><a class="edit" th:href="@{'/admin/gallery/edit/' + ${gallery.id}}">Edit</a></td>
+            <td><a class="delete" th:href="@{'/admin/gallery/delete/' + ${gallery.id}}">Delete</a></td>
           </tr>
         </div>
       </tbody>
     </table>
 
-    <a href="/admin/gallery/add">Add New</a>
-    
-    <script src="/js/loading.js"></script>
-    <script src="/js/admin-header.js"></script>
+    <a class="add" href="/admin/gallery/add">Add New</a>
+  </div>
+
+  <script src="/js/loading.js"></script>
+  <script src="/js/alerts.js"></script>
+  <script src="/js/admin-header.js"></script>
 </body>
