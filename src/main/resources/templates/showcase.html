@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/admin-panel.css">
 </head>
-<body>
+<body th:class="${preferredTheme}">
     <div th:replace="fragments/main-header"></div>
     <div class="main-container">
         <img src="/showcase/images/${showcase.id}" alt="واقعه غیر منتظر اتفاق افتاد...">
