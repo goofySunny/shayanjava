@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -55,6 +56,17 @@ public class MainController {
     @GetMapping("/contact")
     public String contact() {
         return "contact";
+    }
+
+    @GetMapping("/gallery/")
+    public String galleryPage(Model model, @RequestParam(required = false) String searchContext) {
+        if (searchContext == null) {
+            model.addAttribute("galleryItems", galleryService.getAllActiveGalleryItems());
+        } else {
+            // TODO : make this happenw
+            // model.addAttribute("galleryItems", galleryService.getAllByMatchingPattern(searchContext));
+        }
+        return "gallery";
     }
 
     @GetMapping("/showcase/{id}")
