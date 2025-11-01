@@ -41,7 +41,7 @@
         <!-- File Field (Note: Spring form tags don't have file input, use regular HTML) -->
         <div class="form-group">
             <label for="file">Upload Image:</label>
-            <input type="file" id="file" name="file" accept="image/*" required />
+            <input th:field="*{file}" type="file" id="file" name="file" accept="image/*" required />
         </div>
         
         <button type="submit" class="btn btn-primary">Submit</button>

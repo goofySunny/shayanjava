@@ -29,9 +29,8 @@ public class ProvidedServiceItem {
     @Lob
     private byte[] image;
 
-    @Transient
-    private MultipartFile file;
-
     private boolean active;
 
+    @Transient
+    private MultipartFile file;
 }

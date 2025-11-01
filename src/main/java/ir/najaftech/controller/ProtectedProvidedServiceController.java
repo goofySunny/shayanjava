@@ -37,6 +37,7 @@ public class ProtectedProvidedServiceController {
         return "service-addition";
     }
 
+    // TODO : THIS method is working unexpectedly and needs fixing
     @PostMapping("/upload")
     public String uploadNewProvidedServiceItem(@ModelAttribute ProvidedServiceItem item, Model model, BindingResult result)
             throws IOException {
