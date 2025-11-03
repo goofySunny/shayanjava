@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,18 +22,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "gallery_items")
 public class GalleryItem {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "gallery_items_seq")
+    @SequenceGenerator(name = "gallery_items_seq", sequenceName = "gallery_items_seq", initialValue = 109, allocationSize = 1)
     private Long id;
 
     private String title;
 
-    @Column(name = "description")
+    @Column(name = "item_description")
     private String desc;
-
-    @Lob
+    
+    @Column(name = "image_byte")
     private byte[] image;
 
     private boolean active;

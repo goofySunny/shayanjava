@@ -9,23 +9,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "showcase_item")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
+@Table(name = "showcase_items")
 public class ShowcaseItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "showcase_items_seq")
+    @SequenceGenerator(name = "showcase_items_seq", sequenceName = "showcase_items_seq", initialValue = 4, allocationSize = 1)
     private long id;
 
-    @Column(name = "description")
+    @Column(name = "item_description")
     private String desc;
 
     private String title;
 
-    @Lob
+    @Column(name = "image_byte")
     private byte[] image;
 
     private boolean active;
