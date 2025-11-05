@@ -1,7 +1,5 @@
 package ir.najaftech.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
