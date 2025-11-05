@@ -1,10 +1,13 @@
-package ir.najaftech.service;
+package ir.najaftech.service.impl;
 
 
 import ir.najaftech.model.ShowcaseItem;
 import ir.najaftech.repository.ShowcaseItemRepository;
+import ir.najaftech.service.ShowcaseItemService;
+import ir.najaftech.util.FileHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,6 +17,7 @@ import java.util.List;
 public class ShowcaseItemServiceImpl implements ShowcaseItemService {
 
     private final ShowcaseItemRepository repo;
+    private final FileHandler fileHandler;
 
     @Override
     public ShowcaseItem getShowCaseItemById(long id) {
@@ -44,7 +48,7 @@ public class ShowcaseItemServiceImpl implements ShowcaseItemService {
     public ShowcaseItem updateShowCaseItem(ShowcaseItem item, long id) {
         ShowcaseItem old = repo.findById(id).orElse(null);
         if (old != null) {
-            item.setImage(old.getImage());
+            item.setImageName(old.getImageName());
             item.setId(id);
             return repo.save(item);
         }
@@ -52,13 +56,13 @@ public class ShowcaseItemServiceImpl implements ShowcaseItemService {
     }
 
     @Override
-    public ShowcaseItem createShowcaseItem(ShowcaseItem item) throws IOException {
-        ShowcaseItem newItem = ShowcaseItem.builder()
-            .desc(item.getDesc())
-            .image(item.getFile().getBytes())
-            .title(item.getTitle())
-            .active(item.isActive())
-            .build();
-        return repo.save(newItem);
+    public ShowcaseItem createShowcaseItem(ShowcaseItem item, MultipartFile file) throws IOException {
+        ShowcaseItem savedItem = ShowcaseItem.builder()
+        .title(item.getTitle())
+        .imageName(fileHandler.saveFile(file))
+        .desc(item.getDesc())
+        .active(item.isActive())
+        .build();
+        return repo.save(savedItem);
     }
 }

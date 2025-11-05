@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -38,7 +39,7 @@ public class ProtectedShowcaseController {
     }
 
     @PostMapping("/upload")
-    public String uploadNewShowcaseItem(@ModelAttribute ShowcaseItem item, RedirectAttributes redirectAttributes, BindingResult result)
+    public String uploadNewShowcaseItem(@ModelAttribute ShowcaseItem item, RedirectAttributes redirectAttributes, BindingResult result, MultipartFile file)
             throws IOException {
 
         if (result.hasErrors()) {
@@ -49,7 +50,7 @@ public class ProtectedShowcaseController {
             return "redirect:/add";
         }
 
-        service.createShowcaseItem(item);
+        service.createShowcaseItem(item, file);
         
         redirectAttributes.addFlashAttribute("showAlert", true);
         redirectAttributes.addFlashAttribute("alertTitle", "Success");

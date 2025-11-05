@@ -1,12 +1,15 @@
-package ir.najaftech.service;
+package ir.najaftech.service.impl;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import ir.najaftech.model.GalleryItem;
 import ir.najaftech.repository.GalleryItemRepository;
+import ir.najaftech.service.GalleryItemService;
+import ir.najaftech.util.FileHandler;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -14,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 public class GalleryItemServiceImpl implements GalleryItemService {
 
     private final GalleryItemRepository repo;
+    private final FileHandler fileHandler;
 
     @Override
     public List<GalleryItem> getAllGalleryItems() {
@@ -31,13 +35,13 @@ public class GalleryItemServiceImpl implements GalleryItemService {
     }
 
     @Override
-    public GalleryItem createGalleryItem(GalleryItem item) throws IOException {
+    public GalleryItem createGalleryItem(GalleryItem item, MultipartFile file) throws IOException {
         GalleryItem newItem = GalleryItem.builder()
-        .title(item.getTitle())
-        .active(false)
-        .image(item.getFile().getBytes())
-        .desc(item.getDesc())
-        .build();
+            .desc(item.getDesc())
+            .imageName(fileHandler.saveFile(file))
+            .title(item.getTitle())
+            .active(item.isActive())
+            .build();
         return repo.save(newItem);
     }
 
@@ -51,7 +55,7 @@ public class GalleryItemServiceImpl implements GalleryItemService {
     public GalleryItem updateGalleryItem(long id, GalleryItem item) throws Exception {
         GalleryItem oldItem = repo.findById(id).orElseThrow(() -> new Exception("Not found"));
         item.setId(id);
-        item.setImage(oldItem.getImage());
+        item.setImageName(oldItem.getImageName());
         return repo.save(item);
     }
 

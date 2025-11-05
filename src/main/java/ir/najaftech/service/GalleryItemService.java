@@ -3,6 +3,8 @@ package ir.najaftech.service;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import ir.najaftech.model.GalleryItem;
 
 public interface GalleryItemService {
@@ -14,7 +16,7 @@ public interface GalleryItemService {
     // TODO : Correct Exception need to be thrown
     GalleryItem getGalleryItemById(long id) throws Exception;
 
-    GalleryItem createGalleryItem(GalleryItem item) throws IOException;
+    GalleryItem createGalleryItem(GalleryItem item, MultipartFile file) throws IOException;
 
     // TODO : Correct Exception 
     void deleteGalleryItem(long id) throws Exception;

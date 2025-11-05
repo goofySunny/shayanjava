@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,6 +25,8 @@ import lombok.RequiredArgsConstructor;
 public class ProtectedProvidedServiceController {
 
     private final ProvidedServiceItemService service;
+
+    // TODO : this class is missing a delete by Id method
 
     @GetMapping()
     public ModelAndView providedServiceDash() {
@@ -40,7 +43,7 @@ public class ProtectedProvidedServiceController {
 
     // TODO : THIS method is working unexpectedly and needs fixing
     @PostMapping("/upload")
-    public String uploadNewProvidedServiceItem(@ModelAttribute ProvidedServiceItem item, RedirectAttributes redirectAttributes, BindingResult result)
+    public String uploadNewProvidedServiceItem(@ModelAttribute ProvidedServiceItem item, RedirectAttributes redirectAttributes, BindingResult result, MultipartFile file)
             throws IOException {
 
         if (result.hasErrors()) {
@@ -51,7 +54,7 @@ public class ProtectedProvidedServiceController {
             return "redirect:/add";
         }
 
-        service.createProvidedServiceItem(item);
+        service.createProvidedServiceItem(item, file);
 
         redirectAttributes.addFlashAttribute("showAlert", true);
         redirectAttributes.addFlashAttribute("alertTitle", "Success");

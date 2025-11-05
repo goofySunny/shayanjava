@@ -34,13 +34,10 @@ public class GalleryItem {
 
     @Column(name = "item_description")
     private String desc;
-    
-    @Column(name = "image_byte")
-    private byte[] image;
+
+    @Column(name = "image_name")
+    private String imageName;
 
     private boolean active;
-
-    @Transient
-    private MultipartFile file;
 
 }

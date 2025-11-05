@@ -3,6 +3,8 @@ package ir.najaftech.service;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import ir.najaftech.model.ProvidedServiceItem;
 
 public interface ProvidedServiceItemService {
@@ -11,7 +13,7 @@ public interface ProvidedServiceItemService {
 
     List<ProvidedServiceItem> getAllActiveProvidedServiceItems();
 
-    ProvidedServiceItem createProvidedServiceItem(ProvidedServiceItem item) throws IOException;
+    ProvidedServiceItem createProvidedServiceItem(ProvidedServiceItem item, MultipartFile file) throws IOException;
 
     // TODO : Correct Exception need to be thrown
     ProvidedServiceItem getProvidedServiceItemById(long id) throws Exception;

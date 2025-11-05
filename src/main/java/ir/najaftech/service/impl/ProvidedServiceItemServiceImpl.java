@@ -1,12 +1,15 @@
-package ir.najaftech.service;
+package ir.najaftech.service.impl;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import ir.najaftech.model.ProvidedServiceItem;
 import ir.najaftech.repository.ProvidedServiceItemRepository;
+import ir.najaftech.service.ProvidedServiceItemService;
+import ir.najaftech.util.FileHandler;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -14,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 public class ProvidedServiceItemServiceImpl implements ProvidedServiceItemService {
 
     private final ProvidedServiceItemRepository repo;
+    private final FileHandler fileHandler;
 
     @Override
     public List<ProvidedServiceItem> getAllProvidedServiceItems() {
@@ -31,13 +35,12 @@ public class ProvidedServiceItemServiceImpl implements ProvidedServiceItemServic
     }
 
     @Override
-    public ProvidedServiceItem createProvidedServiceItem(ProvidedServiceItem item) throws IOException {
+    public ProvidedServiceItem createProvidedServiceItem(ProvidedServiceItem item, MultipartFile file) throws IOException {
         ProvidedServiceItem newItem = ProvidedServiceItem.builder()
-        .active(item.isActive())
         .title(item.getTitle())
-        .image(item.getFile().getBytes())
+        .active(item.isActive())
+        .imageName(fileHandler.saveFile(file))
         .build();
-
         return repo.save(newItem);
     }
 
@@ -51,7 +54,7 @@ public class ProvidedServiceItemServiceImpl implements ProvidedServiceItemServic
     public ProvidedServiceItem updateProvidedServiceItem(long id, ProvidedServiceItem item) throws Exception {
         ProvidedServiceItem oldItem = repo.findById(id).orElseThrow(() -> new Exception("Not Found"));
         item.setId(id);
-        item.setImage(oldItem.getImage());
+        item.setImageName(oldItem.getImageName());
         return repo.save(item);
     }
 

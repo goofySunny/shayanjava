@@ -35,7 +35,7 @@
       <tbody>
         <div th:each="service : ${serviceItems}">
           <tr>
-            <td><img src="/service/images/${service.id}" alt="service image"></td>
+            <td><img th:src="@{/images/{fileName} (fileName=${service.imageName})}" alt="service image"></td>
             <td th:text="${service.title}"></td>
             <td th:text="${service.active ? 'True' : 'False'}"></td>
             <td><a class="edit" th:href="@{/admin/service/edit/{id}(id=${service.id})}">Edit</a></td>
