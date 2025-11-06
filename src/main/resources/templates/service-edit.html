@@ -24,8 +24,8 @@
     <!-- End of Alerts -->
     
     <form method="POST"
-           th:action="@{/admin/showcase/edit/{id}(id=*{showcaseItem.id})}"
-           th:object="${serviceItem}">
+           th:object="${serviceItem}"
+           th:action="@{/admin/service/edit/{id}(id=*{id})}">
     
         <!-- Title Field -->
         <div class="form-group">
@@ -36,8 +36,8 @@
         <!-- Active Checkbox -->
         <div class="form-group">
             <div class="form-check">
-                <input type="checkbox" path="active" class="form-check-input" />
-                <label path="active" class="form-check-label">
+                <input type="checkbox" th:field="*{active}" class="form-check-input" />
+                <label th:field="*{active}" class="form-check-label">
                     Activate this item
                 </label>
             </div>

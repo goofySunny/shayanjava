@@ -14,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import ir.najaftech.dto.request.ServiceItemRequest;
+import ir.najaftech.dto.response.ServiceItemResponse;
 import ir.najaftech.model.ProvidedServiceItem;
 import ir.najaftech.model.ShowcaseItem;
 import ir.najaftech.service.ProvidedServiceItemService;
@@ -37,13 +39,14 @@ public class ProtectedProvidedServiceController {
 
     @GetMapping("/add")
     public String createProvidedServiceItem(Model model) {
-        model.addAttribute("serviceItem", new ShowcaseItem());
+        model.addAttribute("serviceItem", new ServiceItemRequest());
         return "service-addition";
     }
 
     // TODO : THIS method is working unexpectedly and needs fixing
     @PostMapping("/upload")
-    public String uploadNewProvidedServiceItem(@ModelAttribute ProvidedServiceItem item, RedirectAttributes redirectAttributes, BindingResult result, MultipartFile file)
+    public String uploadNewProvidedServiceItem(@ModelAttribute ServiceItemRequest item,
+            RedirectAttributes redirectAttributes, BindingResult result, MultipartFile file)
             throws IOException {
 
         if (result.hasErrors()) {
@@ -64,7 +67,8 @@ public class ProtectedProvidedServiceController {
     }
 
     @PostMapping("/edit/{id}")
-    public String updateProvidedServiceItem(@PathVariable Long id, @ModelAttribute ProvidedServiceItem item, RedirectAttributes redirectAttributes,
+    public String updateProvidedServiceItem(@PathVariable Long id, @ModelAttribute ServiceItemRequest item,
+            RedirectAttributes redirectAttributes,
             BindingResult result) {
 
         if (result.hasErrors()) {
@@ -93,9 +97,8 @@ public class ProtectedProvidedServiceController {
 
     @GetMapping("/edit/{id}")
     public String editProvidedServiceItem(@PathVariable long id, Model model) throws Exception {
-        ProvidedServiceItem item = service.getProvidedServiceItemById(id);
+        ServiceItemResponse item = service.getProvidedServiceItemById(id);
         model.addAttribute("serviceItem", item);
-        model.addAttribute("successMessage", "Service was successfully modified");
         return "service-edit";
     }
 

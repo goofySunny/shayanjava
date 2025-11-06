@@ -2,10 +2,11 @@ package ir.najaftech.service.impl;
 
 import java.io.IOException;
 import java.util.List;
-
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import ir.najaftech.dto.request.GalleryItemRequest;
 import ir.najaftech.model.GalleryItem;
 import ir.najaftech.repository.GalleryItemRepository;
 import ir.najaftech.service.GalleryItemService;
@@ -18,6 +19,7 @@ public class GalleryItemServiceImpl implements GalleryItemService {
 
     private final GalleryItemRepository repo;
     private final FileHandler fileHandler;
+    private final ModelMapper modelMapper;
 
     @Override
     public List<GalleryItem> getAllGalleryItems() {
@@ -35,13 +37,10 @@ public class GalleryItemServiceImpl implements GalleryItemService {
     }
 
     @Override
-    public GalleryItem createGalleryItem(GalleryItem item, MultipartFile file) throws IOException {
-        GalleryItem newItem = GalleryItem.builder()
-            .desc(item.getDesc())
-            .imageName(fileHandler.saveFile(file))
-            .title(item.getTitle())
-            .active(item.isActive())
-            .build();
+    public GalleryItem createGalleryItem(GalleryItemRequest item, MultipartFile file) throws IOException {
+        GalleryItem newItem = modelMapper.map(item, GalleryItem.class);
+        newItem.setImageName(fileHandler.saveFile(file));
+
         return repo.save(newItem);
     }
 
@@ -52,11 +51,12 @@ public class GalleryItemServiceImpl implements GalleryItemService {
     }
 
     @Override
-    public GalleryItem updateGalleryItem(long id, GalleryItem item) throws Exception {
-        GalleryItem oldItem = repo.findById(id).orElseThrow(() -> new Exception("Not found"));
-        item.setId(id);
-        item.setImageName(oldItem.getImageName());
-        return repo.save(item);
+    public GalleryItem updateGalleryItem(long id, GalleryItemRequest item) throws Exception {
+        GalleryItem newItem = modelMapper.map(item, GalleryItem.class);
+        GalleryItem oldItem = repo.findById(id).orElseThrow(() -> new Exception("Not Found"));
+        newItem.setImageName(oldItem.getImageName());
+        newItem.setId(oldItem.getId());
+        return repo.save(newItem);
     }
 
 }

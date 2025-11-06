@@ -2,6 +2,7 @@ package ir.najaftech.controller;
 
 import java.io.IOException;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import ir.najaftech.dto.request.GalleryItemRequest;
 import ir.najaftech.model.GalleryItem;
 import ir.najaftech.service.GalleryItemService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class ProtectedGalleryController {
 
     private final GalleryItemService service;
+    ModelMapper modelMapper;
 
     @GetMapping()
     public ModelAndView galleryDash() {
@@ -39,7 +42,7 @@ public class ProtectedGalleryController {
     }
 
     @PostMapping("/upload")
-    public String uploadNewGalleryItem(@ModelAttribute GalleryItem item, RedirectAttributes redirectAttributes,
+    public String uploadNewGalleryItem(@ModelAttribute GalleryItemRequest item, RedirectAttributes redirectAttributes,
             BindingResult result, MultipartFile file)
             throws IOException {
 
@@ -60,7 +63,7 @@ public class ProtectedGalleryController {
     }
 
     @PostMapping("/edit/{id}")
-    public String updateGalleryItem(@PathVariable long id, @ModelAttribute GalleryItem item, Model model,
+    public String updateGalleryItem(@PathVariable long id, @ModelAttribute GalleryItemRequest item, Model model,
             BindingResult result) {
 
         if (result.hasErrors()) {

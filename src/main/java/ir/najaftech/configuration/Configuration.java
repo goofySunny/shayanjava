@@ -2,6 +2,7 @@ package ir.najaftech.configuration;
 
 import java.io.File;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.server.ErrorPageRegistrar;
@@ -15,6 +16,12 @@ public class Configuration implements WebMvcConfigurer {
 
     @Value("${upload.path:./uploads}")
     private String uploadPath;
+
+    @Bean
+    public ModelMapper modelMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper;
+    }
 
     @Bean
     public ErrorPageRegistrar errorPageRegistrar() {
