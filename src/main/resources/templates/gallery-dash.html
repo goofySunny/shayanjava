@@ -53,7 +53,7 @@
       <tbody>
         <div th:each="gallery : ${galleryItems}">
           <tr>
-            <td><img th:src="'/gallery/images/' + ${gallery.id}" alt="Gallery image"></td>
+            <td><img th:src="@{/images/{t}(t=${gallery.imageName})}" alt="Gallery image"></td>
             <td th:text="${gallery.title}"></td>
             <td th:text="${gallery.desc}"></td>
             <td th:text="${gallery.active ? 'True' : 'False'}"></td>

@@ -16,19 +16,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ir.najaftech.dto.request.ServiceItemRequest;
 import ir.najaftech.dto.response.ServiceItemResponse;
-import ir.najaftech.model.ProvidedServiceItem;
-import ir.najaftech.model.ShowcaseItem;
 import ir.najaftech.service.ProvidedServiceItemService;
 import lombok.RequiredArgsConstructor;
 
+// TODO : this class is missing a delete by Id method
 @Controller
 @RequestMapping("/admin/service")
 @RequiredArgsConstructor
 public class ProtectedProvidedServiceController {
 
     private final ProvidedServiceItemService service;
-
-    // TODO : this class is missing a delete by Id method
 
     @GetMapping()
     public ModelAndView providedServiceDash() {
@@ -43,7 +40,6 @@ public class ProtectedProvidedServiceController {
         return "service-addition";
     }
 
-    // TODO : THIS method is working unexpectedly and needs fixing
     @PostMapping("/upload")
     public String uploadNewProvidedServiceItem(@ModelAttribute ServiceItemRequest item,
             RedirectAttributes redirectAttributes, BindingResult result, MultipartFile file)
