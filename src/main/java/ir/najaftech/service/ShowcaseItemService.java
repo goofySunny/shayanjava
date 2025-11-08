@@ -1,5 +1,7 @@
 package ir.najaftech.service;
 
+import ir.najaftech.dto.request.ShowcaseRequest;
+import ir.najaftech.dto.response.ShowcaseResponse;
 import ir.najaftech.model.ShowcaseItem;
 
 import java.io.IOException;
@@ -9,16 +11,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface ShowcaseItemService {
 
-    ShowcaseItem getShowCaseItemById(long id);
+    ShowcaseResponse getShowCaseItemById(long id) throws Exception;
 
-    List<ShowcaseItem> getAllActiveShowcaseItems();
+    List<ShowcaseResponse> getAllActiveShowcaseItems();
 
-    List<ShowcaseItem> getAllShowcaseItems();
+    List<ShowcaseResponse> getAllShowcaseItems();
 
     boolean deleteShowcaseItemById(long id);
 
-    ShowcaseItem updateShowCaseItem(ShowcaseItem item, long id);
+    ShowcaseItem updateShowCaseItem(ShowcaseRequest item, long id) throws Exception;
 
-    ShowcaseItem createShowcaseItem(ShowcaseItem item, MultipartFile file) throws IOException;
+    ShowcaseItem createShowcaseItem(ShowcaseRequest item, MultipartFile file) throws IOException;
 
 }

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShowcaseServiceRequest {
+public class ShowcaseRequest {
     
     private String title;
 

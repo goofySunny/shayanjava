@@ -1,5 +1,7 @@
 package ir.najaftech.controller;
 
+import ir.najaftech.dto.request.ShowcaseRequest;
+import ir.najaftech.dto.response.ShowcaseResponse;
 import ir.najaftech.model.ShowcaseItem;
 import ir.najaftech.service.ShowcaseItemService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+// TODO : convert this to requestDTOS
 @Controller
 @RequestMapping("/admin/showcase")
 @RequiredArgsConstructor
@@ -34,12 +37,12 @@ public class ProtectedShowcaseController {
 
     @GetMapping("/add")
     public String createShowcase(Model model) {
-        model.addAttribute("showcaseItem", new ShowcaseItem());
+        model.addAttribute("showcaseItem", new ShowcaseRequest());
         return "showcase-addition";
     }
 
     @PostMapping("/upload")
-    public String uploadNewShowcaseItem(@ModelAttribute ShowcaseItem item, RedirectAttributes redirectAttributes, BindingResult result, MultipartFile file)
+    public String uploadNewShowcaseItem(@ModelAttribute ShowcaseRequest item, RedirectAttributes redirectAttributes, BindingResult result, MultipartFile file)
             throws IOException {
 
         if (result.hasErrors()) {
@@ -60,7 +63,7 @@ public class ProtectedShowcaseController {
     }
 
     @PostMapping("/edit/{id}")
-    public String updateShowcaseItem(@PathVariable long id, @ModelAttribute ShowcaseItem item, RedirectAttributes redirectAttributes, BindingResult result) {
+    public String updateShowcaseItem(@PathVariable long id, @ModelAttribute ShowcaseRequest item, RedirectAttributes redirectAttributes, BindingResult result) {
 
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("showAlert", true);
@@ -88,8 +91,8 @@ public class ProtectedShowcaseController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editShowcase(@PathVariable long id, Model model) {
-        ShowcaseItem item = service.getShowCaseItemById(id);
+    public String editShowcase(@PathVariable long id, Model model) throws Exception { 
+        ShowcaseResponse item = service.getShowCaseItemById(id);
         model.addAttribute("showcaseItem", item);
         model.addAttribute("successMessage", "Showcase was successfully modified");
     return "showcase-edit";

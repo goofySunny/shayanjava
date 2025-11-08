@@ -62,7 +62,7 @@ public class MainController {
     }
 
     @GetMapping("/showcase/{id}")
-    public String focusShowcase(@PathVariable Long id, Model model) {
+    public String focusShowcase(@PathVariable Long id, Model model) throws Exception {
         model.addAttribute("showcase", showcaseService.getShowCaseItemById(id));
 
         return "showcase";
