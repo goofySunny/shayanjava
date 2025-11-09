@@ -2,7 +2,6 @@ package ir.najaftech.controller;
 
 import ir.najaftech.dto.request.ShowcaseRequest;
 import ir.najaftech.dto.response.ShowcaseResponse;
-import ir.najaftech.model.ShowcaseItem;
 import ir.najaftech.service.ShowcaseItemService;
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
-// TODO : convert this to requestDTOS
 @Controller
 @RequestMapping("/admin/showcase")
 @RequiredArgsConstructor

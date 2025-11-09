@@ -19,7 +19,6 @@ import ir.najaftech.dto.response.ServiceItemResponse;
 import ir.najaftech.service.ProvidedServiceItemService;
 import lombok.RequiredArgsConstructor;
 
-// TODO : this class is missing a delete by Id method
 @Controller
 @RequestMapping("/admin/service")
 @RequiredArgsConstructor
@@ -98,4 +97,22 @@ public class ProtectedProvidedServiceController {
         return "service-edit";
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteProvidedServiceItem(@PathVariable long id, RedirectAttributes redirectAttributes) {
+        try {
+            service.deleteProvidedServiceItem(id);
+            redirectAttributes.addFlashAttribute("showAlert", true);
+            redirectAttributes.addFlashAttribute("alertTitle", "Success!");
+            redirectAttributes.addFlashAttribute("alertType", "success");
+            redirectAttributes.addFlashAttribute("alertMessage", "Service Item Deleted Successfully");
+        } catch (Exception ex) {
+            redirectAttributes.addFlashAttribute("showAlert", true);
+            redirectAttributes.addFlashAttribute("alertTitle", "Fail!");
+            redirectAttributes.addFlashAttribute("alertType", "error");
+            redirectAttributes.addFlashAttribute("alertMessage", "Something went wrong!");
+            return "redirect:/admin/service";
+        }
+
+        return "redirect:/admin/service";
+    }
 }
