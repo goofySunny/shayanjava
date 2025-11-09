@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
-// TODO : convert this to requestDTOS
 @Controller
 @RequestMapping("/admin/showcase")
 @RequiredArgsConstructor

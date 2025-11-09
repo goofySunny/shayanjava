@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO : refactor the return types into Response dtos
+
 @Service
 @RequiredArgsConstructor
 public class ShowcaseItemServiceImpl implements ShowcaseItemService {
@@ -47,13 +47,9 @@ public class ShowcaseItemServiceImpl implements ShowcaseItemService {
     }
 
     @Override
-    public boolean deleteShowcaseItemById(long id) {
-        if(repo.findById(id).orElse(null) != null) {
-            repo.deleteById(id);
-            return true;
-        };
-
-        return false;
+    public void deleteShowcaseItemById(long id) throws Exception {
+        repo.findById(id).orElseThrow(() -> new Exception("Not Found"));
+        repo.deleteById(id);
     }
 
     @Override

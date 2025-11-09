@@ -16,10 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ir.najaftech.dto.request.GalleryItemRequest;
-import ir.najaftech.model.GalleryItem;
+import ir.najaftech.dto.response.GalleryItemResponse;
 import ir.najaftech.service.GalleryItemService;
 import lombok.RequiredArgsConstructor;
-// TODO : convert this to requestDTOS
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/admin/gallery")
@@ -84,10 +84,9 @@ public class ProtectedGalleryController {
         return "redirect:/admin/gallery";
     }
 
-    // TODO : this needs to return galleryResponse
     @GetMapping("/edit/{id}")
     public String editGalleryItem(@PathVariable long id, Model model) throws Exception {
-        GalleryItem item = service.getGalleryItemById(id);
+        GalleryItemResponse item = service.getGalleryItemById(id);
         model.addAttribute("galleryItem", item);
         model.addAttribute("successMessage", "Gallery Item was successfully modified");
         return "gallery-edit";

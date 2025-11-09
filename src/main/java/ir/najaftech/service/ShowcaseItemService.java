@@ -17,7 +17,7 @@ public interface ShowcaseItemService {
 
     List<ShowcaseResponse> getAllShowcaseItems();
 
-    boolean deleteShowcaseItemById(long id);
+    void deleteShowcaseItemById(long id) throws Exception;
 
     ShowcaseItem updateShowCaseItem(ShowcaseRequest item, long id) throws Exception;
 

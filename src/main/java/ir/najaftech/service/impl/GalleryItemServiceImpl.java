@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import ir.najaftech.dto.request.GalleryItemRequest;
+import ir.najaftech.dto.response.GalleryItemResponse;
 import ir.najaftech.model.GalleryItem;
 import ir.najaftech.repository.GalleryItemRepository;
 import ir.najaftech.service.GalleryItemService;
@@ -32,8 +33,9 @@ public class GalleryItemServiceImpl implements GalleryItemService {
     }
 
     @Override
-    public GalleryItem getGalleryItemById(long id) throws Exception {
-        return repo.findById(id).orElseThrow(() -> new Exception("Not found"));
+    public GalleryItemResponse getGalleryItemById(long id) throws Exception {
+        GalleryItem gi = repo.findById(id).orElseThrow(() -> new Exception("Not found"));
+        return modelMapper.map(gi, GalleryItemResponse.class);
     }
 
     @Override
