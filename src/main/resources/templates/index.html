@@ -9,416 +9,169 @@
   <script type="module" src="/js/index.js"></script>
 </head>
 
-<body class="light">
-  <div th:replace="fragments/main-header"></div>
+<body>
+  <!-- <div th:replace="fragments/main-header"></div> -->
+   <div class="wrapper">
 
-  <!-- Content slide -->
-  <div class="content-parent">
-    <div class="content-slider" id="slider">
-      <div class="content">
-        <!-- این قسمت مربوط به پروژه اصلی هست و آیتم ها رو از دیتابیس میکشه بیرون -->
-        <!-- <div th:each="service : ${providedServiceItems}">
-          <div class="content-item">
-            <img th:src="'/service/images/' + ${service.id}" alt="Service Image">
-            <p th:text="${item.title}">
-              title
-            </p>
-          </div>
-        </div> -->
-        <!-- پایان -->
+<header>
+  <div class="header-inner">
+    <div class="brand">نام برند تو</div>
+    <nav>
+      <ul>
+        <li><a href="#">صفحه اصلی</a></li>
+        <li><a href="#">محصولات</a></li>
+        <li><a href="#">پروژه‌ها</a></li>
+        <li><a href="#">درباره ما</a></li>
+      </ul>
+    </nav>
+    <a class="cta" href="#">ارتباط با ما</a>
+  </div>
+</header>
 
-
-        <!-- این قسمت برای توسعه راحت تر حذف شده و در برنامه نهایی وجود خواهد داشت -->
-        <div class="content-item">
-          <img src="/images/q.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/w.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/e.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/r.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/q.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/w.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/e.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/r.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/q.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/w.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/e.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/r.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-        <div class="content-item">
-          <img src="/images/q.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/w.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/e.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <div class="content-item">
-          <img src="/images/r.svg" alt="Service Image">
-          <p>
-            Lorem
-          </p>
-        </div>
-
-        <!-- پایان -->
-
+<section class="carousel" aria-label="بنر اصلی">
+  <div class="slides" id="slides">
+    <div class="slide" style="background-image:url('https://via.placeholder.com/1400x500/0f4d2d/ffffff?text=Banner+1')">
+      <div class="caption">
+        <h1>عنوان بنر اول — پیام کوتاه</h1>
+        <p>متن توضیحی کوتاه روی بنر نمایش داده می‌شود.</p>
       </div>
-
+    </div>
+    <div class="slide" style="background-image:url('https://via.placeholder.com/1400x500/14663a/ffffff?text=Banner+2')">
+      <div class="caption">
+        <h1>بنر دوم — پیشنهاد ویژه</h1>
+        <p>برای نمایش تخفیف یا معرفی محصول جدید مناسب است.</p>
+      </div>
+    </div>
+    <div class="slide" style="background-image:url('https://via.placeholder.com/1400x500/0f4d2d/ffffff?text=Banner+3')">
+      <div class="caption">
+        <h1>بنر سوم — خبر یا اطلاعیه</h1>
+        <p>کال تو اکشن یا معرفی خدمت در اینجا قرار می‌گیرد.</p>
+      </div>
     </div>
   </div>
+  <div class="dots" id="dots"></div>
+</section>
 
-  <div class="content-controls">
-    <button id="left">
-      <img src="/images/arrow-left.svg" alt="">
-    </button>
-    <button id="right">
-      <img src="/images/arrow-left.svg" alt="">
-    </button>
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title">
+      <h3>دسته‌بندی محصولات</h3>
+      <a href="#" style="color:var(--green-900); font-weight:600">نمایش همه</a>
+    </div>
+    <div class="categories">
+      <div class="cat"><div class="icon">A</div><div>دسته ۱</div></div>
+      <div class="cat"><div class="icon">B</div><div>دسته ۲</div></div>
+      <div class="cat"><div class="icon">C</div><div>دسته ۳</div></div>
+      <div class="cat"><div class="icon">D</div><div>دسته ۴</div></div>
+      <div class="cat"><div class="icon">E</div><div>دسته ۵</div></div>
+      <div class="cat"><div class="icon">F</div><div>دسته ۶</div></div>
+      <div class="cat"><div class="icon">G</div><div>دسته ۷</div></div>
+      <div class="cat"><div class="icon">H</div><div>دسته ۸</div></div>
+    </div>
   </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title">
+      <a href="#" style="color:var(--green-900); font-weight:600">مشاهده همه محصولات</a>
+      <h3>محصولات</h3>
+    </div>
+    <div class="products-wrap">
+    
+      <div class="products" id="products">
+        <div class="product">
+          <div class="img" style="background-image:url('https://via.placeholder.com/600x400?text=Product+1')"></div>
+          <div class="body"><h4>نام محصول ۱</h4><p>توضیح کوتاه درباره محصول و ویژگی‌های آن.</p></div>
+        </div>
+        <div class="product">
+          <div class="img" style="background-image:url('https://via.placeholder.com/600x400?text=Product+2')"></div>
+          <div class="body"><h4>نام محصول ۲</h4><p>توضیح کوتاه درباره محصول و ویژگی‌های آن.</p></div>
+        </div>
+        <div class="product">
+          <div class="img" style="background-image:url('https://via.placeholder.com/600x400?text=Product+3')"></div>
+          <div class="body"><h4>نام محصول ۳</h4><p>توضیح کوتاه درباره محصول و ویژگی‌های آن.</p></div>
+        </div>
+        <div class="product">
+          <div class="img" style="background-image:url('https://via.placeholder.com/600x400?text=Product+4')"></div>
+          <div class="body"><h4>نام محصول ۴</h4><p>توضیح کوتاه درباره محصول و ویژگی‌های آن.</p></div>
+        </div>
+         <div class="product">
+          <div class="img" style="background-image:url('https://via.placeholder.com/600x400?text=Product+4')"></div>
+          <div class="body"><h4>نام محصول ۴</h4><p>توضیح کوتاه درباره محصول و ویژگی‌های آن.</p></div>
+        </div>
+         <div class="product">
+          <div class="img" style="background-image:url('https://via.placeholder.com/600x400?text=Product+4')"></div>
+          <div class="body"><h4>نام محصول ۴</h4><p>توضیح کوتاه درباره محصول و ویژگی‌های آن.</p></div>
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- End of Content slide -->
+</section>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-
-    <!-- این قسمت برای توسعه راحت تر حذف شده و در برنامه نهایی وجود خواهد داشت -->
-    <!-- <div th:each="showcase : ${showcaseItems}">
-      <div class="hero-item active">
-        <div class="image">
-          <a href="/showcase/${showcase.id}">
-            <img th:src="'/showcase/images/' + ${showcase.id}" alt="Hero Item">
-          </a>
-        </div>
-        <div>
-          <p th:text="${showcase.desc}">
-            desc
-          </p>
-        </div>
-      </div> -->
-    <!-- پایان -->
-
-    <!-- این قسمت فقط برای توسعه راحت تر ساخته شده و در برنامه نهایی وحود ندارد -->
-    <div class="hero-item">
-      <div class="image">
-        <a>
-          <img src="/images/1.jpg" alt="Hero Item">
-        </a>
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title">
+      <a href="#" style="color:var(--green-900); font-weight:600">مشاهده همه پروژه‌ها</a>
+      <h3>پروژه‌ها</h3>
+    </div>
+    <div class="projects">
+      <div class="project" onclick="openProject(1)">
+        <img src="https://via.placeholder.com/800x500?text=Project+1" alt="پروژه ۱">
+        <div class="meta"><h4>پروژه ۱</h4><p>خلاصه کوتاه پروژه</p></div>
       </div>
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-        </p>
+      <div class="project" onclick="openProject(2)">
+        <img src="https://via.placeholder.com/800x500?text=Project+2" alt="پروژه ۲">
+        <div class="meta"><h4>پروژه ۲</h4><p>خلاصه کوتاه پروژه</p></div>
+      </div>
+      <div class="project" onclick="openProject(3)">
+        <img src="https://via.placeholder.com/800x500?text=Project+3" alt="پروژه ۳">
+        <div class="meta"><h4>پروژه ۳</h4><p>خلاصه کوتاه پروژه</p></div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="hero-item active">
-      <div class="image">
-        <a>
-          <img src="/images/2.jpg" alt="Hero Item">
-        </a>
-      </div>
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-        </p>
-      </div>
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title">
+      <div></div>
+      <h3>درباره ما</h3>
     </div>
-
-    <div class="hero-item">
-      <div class="image">
-        <a>
-          <img src="/images/3.jpg" alt="Hero Item">
-        </a>
-      </div>
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-        </p>
-      </div>
-    </div>
-
-    <div class="hero-item">
-      <div class="image">
-        <a>
-          <img src="/images/4.jpg" alt="Hero Item">
-        </a>
-      </div>
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-          vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.
-          Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos
-          himenaeos.
-        </p>
-      </div>
-    </div>
-    <!-- پایان -->
-    </div>
-  </section>
-  <!-- End of Hero Section -->
-
-  <!-- Photo Gallery -->
-  <section class="photo-gallery">
-    <div class="gallery-title">
-      <h3>عنوان مثال</h3>
-      <a href="">بیشتر ></a>
-    </div>
-    <div class="gallery-slider">
-      <!-- این قسمت برای توسعه راحت تر حذف شده و در برنامه نهایی وجود خواهد داشت -->
-      <!-- <div th:each="gallery : ${galleryItems}">
-        <div class="gallery-item">
-          <img th:src="'/gallery/images/' + ${gallery.id}" alt="Gallery Image">
-          <p th:text="${gallery.desc}">
-            desc
-          </p>
-        </div>
-      </div> -->
-      <!-- پایان -->
-
-      <!-- توسعه راخت تر -->
-       <div class="gallery-item">
-          <img src="/images/1.jpg" alt="Gallery Image">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
-          </p>
-        </div>
+    <div class="about">
+      <div class="imgbox" role="img" aria-label="عکس درباره ما">
         
-        <div class="gallery-item">
-          <img src="/images/2.jpg" alt="Gallery Image">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
-          </p>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="/images/3.jpg" alt="Gallery Image">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
-          </p>
-        </div>
-
-        <div class="gallery-item">
-          <img src="/images/4.jpg" alt="Gallery Image">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
-          </p>
-        </div>
-
-        <div class="gallery-item">
-          <img src="/images/5.jpg" alt="Gallery Image">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
-          </p>
-        </div>
-
-        <div class="gallery-item">
-          <img src="/images/6.jpg" alt="Gallery Image">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
-          </p>
-        </div>
-
-        <div class="gallery-item">
-          <img src="/images/1.jpg" alt="Gallery Image">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ducimus? Incidunt, perferendis hic praesentium temporibus atque iusto ea, quam voluptatum, saepe vero reiciendis illum cupiditate tenetur minima laborum! Error, minus.
-          </p>
-        </div>
-      <!-- پایان -->
+      </div>
+      <div class="text">
+        <h3>عنوان کوتاه درباره ما</h3>
+        <p>اینجا متنی قرار می‌گیرد که مأموریت، تاریخچه یا اهداف شرکت/سرویس شما را به‌صورت خلاصه بیان می‌کند.</p>
+      </div>
     </div>
-  </section>
-  <!-- End of Photo Gallery -->
+  </div>
+</section>
 
-  <div th:replace="fragments/footer"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4 style="color: var(--yellow);">ارتباط با ما</h4>
+      <p>تلفن: ۰۲۱-۱۲۳۴۵۶</p>
+      <p>ایمیل: info@example.com</p>
+    </div>
+    <div class="footer-col address">
+      <h4 style="color: var(--yellow);">آدرس‌ها</h4>
+      <p>دفتر مرکزی: شهر، خیابان مثال، پلاک ۱۲</p>
+      <p>نمایندگی شمال: شهر، خیابان مثال ۲</p>
+    </div>
+    <div class="footer-col">
+      <h4 style="color: var(--yellow);">شبکه‌های اجتماعی</h4>
+      <p>اینستاگرام / لینکدین / تلگرام</p>
+    </div>
+  </div>
+</footer>
+
+</div>
+   
+  <!-- <div id="footer" th:replace="fragments/footer"></div> -->
   <script src="/js/loading.js"></script>
 </body>
 
