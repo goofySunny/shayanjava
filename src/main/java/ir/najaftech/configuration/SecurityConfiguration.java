@@ -31,12 +31,16 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(
                 auth -> {
                     auth.requestMatchers("/admin/*").authenticated()
+                            .requestMatchers("/admin").authenticated()
                             .anyRequest().permitAll();
                 }
         )
                 .formLogin(form -> {
                     form.loginPage("/login")
                         .permitAll();
+                })
+                .exceptionHandling(ex -> {
+                    ex.accessDeniedPage("/403");
                 })
                 .csrf(csrf -> csrf.disable())
                 .headers(header -> header.frameOptions(t -> t.sameOrigin()));

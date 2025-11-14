@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import ir.najaftech.model.ProvidedServiceItem;
-import ir.najaftech.model.ShowcaseItem;
+import ir.najaftech.dto.request.ServiceItemRequest;
+import ir.najaftech.dto.response.ServiceItemResponse;
 import ir.najaftech.service.ProvidedServiceItemService;
 import lombok.RequiredArgsConstructor;
 
@@ -33,51 +35,84 @@ public class ProtectedProvidedServiceController {
 
     @GetMapping("/add")
     public String createProvidedServiceItem(Model model) {
-        model.addAttribute("serviceItem", new ShowcaseItem());
+        model.addAttribute("serviceItem", new ServiceItemRequest());
         return "service-addition";
     }
 
     @PostMapping("/upload")
-    public String uploadNewProvidedServiceItem(@ModelAttribute ProvidedServiceItem item, Model model, BindingResult result)
+    public String uploadNewProvidedServiceItem(@ModelAttribute ServiceItemRequest item,
+            RedirectAttributes redirectAttributes, BindingResult result, MultipartFile file)
             throws IOException {
 
         if (result.hasErrors()) {
-            model.addAttribute("message", "Something went wrong");
+            redirectAttributes.addFlashAttribute("showAlert", true);
+            redirectAttributes.addFlashAttribute("alertTitle", "Fail!");
+            redirectAttributes.addFlashAttribute("alertType", "error");
+            redirectAttributes.addFlashAttribute("alertMessage", "Something went wrong!");
             return "redirect:/add";
         }
 
-        service.createProvidedServiceItem(item);
+        service.createProvidedServiceItem(item, file);
 
-        model.addAttribute("message", "Showcase Item added");
+        redirectAttributes.addFlashAttribute("showAlert", true);
+        redirectAttributes.addFlashAttribute("alertTitle", "Success");
+        redirectAttributes.addFlashAttribute("alertType", "success");
+        redirectAttributes.addFlashAttribute("alertMessage", "Service Item Added");
         return "redirect:/admin/service/add";
     }
 
     @PostMapping("/edit/{id}")
-    public String updateProvidedServiceItem(@PathVariable Long id, @ModelAttribute ProvidedServiceItem item, Model model,
+    public String updateProvidedServiceItem(@PathVariable Long id, @ModelAttribute ServiceItemRequest item,
+            RedirectAttributes redirectAttributes,
             BindingResult result) {
 
         if (result.hasErrors()) {
-            model.addAttribute("message", "Something went wrong");
+            redirectAttributes.addFlashAttribute("showAlert", true);
+            redirectAttributes.addFlashAttribute("alertTitle", "Fail!");
+            redirectAttributes.addFlashAttribute("alertType", "error");
+            redirectAttributes.addFlashAttribute("alertMessage", "Something went wrong!");
             return "redirect:/admin/service/edit/" + id;
         }
 
         try {
             service.updateProvidedServiceItem(id, item);
         } catch (Exception ex) {
-            model.addAttribute("message", "Something went wrong");
+            redirectAttributes.addFlashAttribute("showAlert", true);
+            redirectAttributes.addFlashAttribute("alertTitle", "Fail!");
+            redirectAttributes.addFlashAttribute("alertType", "error");
+            redirectAttributes.addFlashAttribute("alertMessage", "Something went wrong!");
             return "redirect:/admin/service/edit/" + id;
         }
-
-        model.addAttribute("successMessage", "Service item successfully modified");
+        redirectAttributes.addFlashAttribute("showAlert", true);
+        redirectAttributes.addFlashAttribute("alertTitle", "Success");
+        redirectAttributes.addFlashAttribute("alertType", "success");
+        redirectAttributes.addFlashAttribute("alertMessage", "Service Item Added");
         return "redirect:/admin/service";
     }
 
     @GetMapping("/edit/{id}")
     public String editProvidedServiceItem(@PathVariable long id, Model model) throws Exception {
-        ProvidedServiceItem item = service.getProvidedServiceItemById(id);
+        ServiceItemResponse item = service.getProvidedServiceItemById(id);
         model.addAttribute("serviceItem", item);
-        model.addAttribute("successMessage", "Service was successfully modified");
         return "service-edit";
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteProvidedServiceItem(@PathVariable long id, RedirectAttributes redirectAttributes) {
+        try {
+            service.deleteProvidedServiceItem(id);
+            redirectAttributes.addFlashAttribute("showAlert", true);
+            redirectAttributes.addFlashAttribute("alertTitle", "Success!");
+            redirectAttributes.addFlashAttribute("alertType", "success");
+            redirectAttributes.addFlashAttribute("alertMessage", "Service Item Deleted Successfully");
+        } catch (Exception ex) {
+            redirectAttributes.addFlashAttribute("showAlert", true);
+            redirectAttributes.addFlashAttribute("alertTitle", "Fail!");
+            redirectAttributes.addFlashAttribute("alertType", "error");
+            redirectAttributes.addFlashAttribute("alertMessage", "Something went wrong!");
+            return "redirect:/admin/service";
+        }
+
+        return "redirect:/admin/service";
+    }
 }

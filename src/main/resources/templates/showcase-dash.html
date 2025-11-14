@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/admin-panel.css">
 </head>
-<body>
+<body th:class="${preferredTheme}">
     <div th:replace="fragments/admin-header"></div>
     <h1>Manage showcase items below</h1>
 
@@ -35,7 +35,7 @@
       <tbody>
         <div th:each="showcase : ${showcaseItems}">
           <tr>
-            <td><img src="/showcase/images/${showcase.id}" alt="Showcase image"></td>
+            <td><img th:src="@{/images/{t} (t=${showcase.imageName})}" alt="Showcase image"></td>
             <td th:text="${showcase.title}"></td>
             <td th:text="${showcase.desc}"></td>
             <td th:text="${showcase.active ? 'True' : 'False'}"></td>
@@ -44,6 +44,9 @@
         </div>
       </tbody>
     </table>
+
+    <a href="/admin/showcase/add">Add New</a>
     
     <script src="/js/loading.js"></script>
+    <script src="/js/admin-header.js"></script>
 </body>

@@ -1,13 +1,12 @@
 package ir.najaftech.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Transient;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,20 +17,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "provided_service_items")
 public class ProvidedServiceItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "provided_service_items_seq")
+    @SequenceGenerator(name = "provided_service_items_seq", sequenceName = "provided_service_items_seq", initialValue = 12, allocationSize = 1)
     private Long id;
 
     private String title;
 
-    @Lob
-    private byte[] image;
-
-    @Transient
-    private MultipartFile file;
+    @Column(name = "image_name")
+    private String imageName;
 
     private boolean active;
-
+    
 }

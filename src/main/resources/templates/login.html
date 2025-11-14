@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Shayan</title>
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/admin-panel.css">
   <style>
     form {
         width: 50%;
@@ -34,7 +33,7 @@
     }
   </style>
 </head>
-<body>
+<body th:class="${preferredTheme}">
     <div th:replace="fragments/main-header"></div>
 
     <div>
