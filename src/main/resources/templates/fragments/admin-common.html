@@ -1,0 +1,33 @@
+<header th:fragment="header">
+  <div class="header-inner">
+    <div class="brand">Shayan Box</div>
+    <nav>
+      <ul>
+        <li><a th:href="@{/}">صفحه اصلی</a></li>
+        <li><a th:href="@{/products}">محصولات</a></li>
+        <li><a th:href="@{/projects}">پروژه‌ها</a></li>
+        <li><a th:href="@{/about}">درباره ما</a></li>
+      </ul>
+    </nav>
+    <a class="cta" href="#">ارتباط با ما</a>
+  </div>
+</header>
+
+<footer th:fragment="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4 style="color: var(--yellow);">ارتباط با ما</h4>
+      <p>تلفن: ۰۲۱-۱۲۳۴۵۶</p>
+      <p>ایمیل: info@example.com</p>
+    </div>
+    <div class="footer-col address">
+      <h4 style="color: var(--yellow);">آدرس‌ها</h4>
+      <p>دفتر مرکزی: شهر، خیابان مثال، پلاک ۱۲</p>
+      <p>نمایندگی شمال: شهر، خیابان مثال ۲</p>
+    </div>
+    <div class="footer-col">
+      <h4 style="color: var(--yellow);">شبکه‌های اجتماعی</h4>
+      <p>اینستاگرام / لینکدین / تلگرام</p>
+    </div>
+  </div>
+</footer>

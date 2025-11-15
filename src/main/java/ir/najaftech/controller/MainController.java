@@ -18,10 +18,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
-
 
 @Controller
 @RequiredArgsConstructor
@@ -45,7 +41,6 @@ public class MainController {
     public String getMethodName() {
         return "admin";
     }
-    
 
     @GetMapping("/about")
     public String about() {
@@ -55,6 +50,20 @@ public class MainController {
     @GetMapping("/contact")
     public String contact() {
         return "contact";
+    }
+
+    @GetMapping("/products")
+    public String productsPage() {
+        // TODO‌ :‌ ‌‌‌‌Retrieve All products and display them here
+        // TODO‌ : If there exists a search query return matching results‌‌‌
+        return "products";
+    }
+
+    @GetMapping("/projects")
+    public String projectsPage() {
+        // TODO‌ :‌ ‌‌‌‌Retrieve All projects and display them here
+        // TODO‌ : If there exists a search query return matching results‌‌‌
+        return "projects";
     }
 
     @GetMapping("/showcase/{id}")
@@ -107,5 +116,5 @@ public class MainController {
     public String login() {
         return "login";
     }
-    
+
 }
