@@ -15,9 +15,9 @@
 
     <section class="carousel" aria-label="بنر اصلی">
       <div class="slides" id="slides">
-        
+
         <!-- Placeholders -->
-        <div class="slide"
+        <!-- <div class="slide"
           style="background-image:url('https://via.placeholder.com/1400x500/0f4d2d/ffffff?text=Banner+1')">
           <div class="caption">
             <h1>عنوان بنر اول — پیام کوتاه</h1>
@@ -37,8 +37,16 @@
             <h1>بنر سوم — خبر یا اطلاعیه</h1>
             <p>کال تو اکشن یا معرفی خدمت در اینجا قرار می‌گیرد.</p>
           </div>
+        </div> -->
+
+        <div class="slide" th:each="showcase : ${showcaseItems}"
+          th:style="|background-image:url('@{/images/{image} (image=${showcase.imageName})}')|">
+          <div class="caption">
+            <h1 th:text="${showcase.title}">بنر دوم — پیشنهاد ویژه</h1>
+            <p th:text="${showcase.desc}">برای نمایش تخفیف یا معرفی محصول جدید مناسب است.</p>
+          </div>
         </div>
-        
+
       </div>
       <div class="dots" id="dots"></div>
     </section>
