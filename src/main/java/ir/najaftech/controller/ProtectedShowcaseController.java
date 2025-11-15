@@ -1,6 +1,7 @@
 package ir.najaftech.controller;
 
-import ir.najaftech.model.ShowcaseItem;
+import ir.najaftech.dto.request.ShowcaseRequest;
+import ir.najaftech.dto.response.ShowcaseResponse;
 import ir.najaftech.service.ShowcaseItemService;
 import lombok.RequiredArgsConstructor;
 
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -32,47 +35,62 @@ public class ProtectedShowcaseController {
 
     @GetMapping("/add")
     public String createShowcase(Model model) {
-        model.addAttribute("showcaseItem", new ShowcaseItem());
+        model.addAttribute("showcaseItem", new ShowcaseRequest());
         return "showcase-addition";
     }
 
     @PostMapping("/upload")
-    public String uploadNewShowcaseItem(@ModelAttribute ShowcaseItem item, Model model, BindingResult result)
+    public String uploadNewShowcaseItem(@ModelAttribute ShowcaseRequest item, RedirectAttributes redirectAttributes, BindingResult result, MultipartFile file)
             throws IOException {
 
         if (result.hasErrors()) {
-            model.addAttribute("message", "Something went wrong");
+            redirectAttributes.addFlashAttribute("showAlert", true);
+            redirectAttributes.addFlashAttribute("alertTitle", "Fail!");
+            redirectAttributes.addFlashAttribute("alertType", "error");
+            redirectAttributes.addFlashAttribute("alertMessage", "Something went wrong!");
             return "redirect:/add";
         }
 
-        service.createShowcaseItem(item);
-
-        model.addAttribute("message", "Showcase Item added");
+        service.createShowcaseItem(item, file);
+        
+        redirectAttributes.addFlashAttribute("showAlert", true);
+        redirectAttributes.addFlashAttribute("alertTitle", "Success");
+        redirectAttributes.addFlashAttribute("alertType", "success");
+        redirectAttributes.addFlashAttribute("alertMessage", "Showcase Item Added");
         return "redirect:/admin/showcase/add";
     }
 
     @PostMapping("/edit/{id}")
-    public String updateShowcaseItem(@PathVariable long id, @ModelAttribute ShowcaseItem item, Model model, BindingResult result) {
+    public String updateShowcaseItem(@PathVariable long id, @ModelAttribute ShowcaseRequest item, RedirectAttributes redirectAttributes, BindingResult result) {
 
         if (result.hasErrors()) {
-            model.addAttribute("message", "Something went wrong");
+            redirectAttributes.addFlashAttribute("showAlert", true);
+            redirectAttributes.addFlashAttribute("alertTitle", "Fail!");
+            redirectAttributes.addFlashAttribute("alertType", "error");
+            redirectAttributes.addFlashAttribute("alertMessage", "Something went wrong!");
             return "redirect:/admin/showcase/edit/" + id;
         }
 
         try {
             service.updateShowCaseItem(item, id);
         } catch (Exception ex) {
-            model.addAttribute("message", "Something went wrong");
+            redirectAttributes.addFlashAttribute("showAlert", true);
+            redirectAttributes.addFlashAttribute("alertTitle", "Fail!");
+            redirectAttributes.addFlashAttribute("alertType", "error");
+            redirectAttributes.addFlashAttribute("alertMessage", "Something went wrong!");
             return "redirect:/admin/showcase/edit/" + id;
         }
 
-        model.addAttribute("successMessage", "Showcase item successfully modified");
+        redirectAttributes.addFlashAttribute("showAlert", true);
+        redirectAttributes.addFlashAttribute("alertTitle", "Success");
+        redirectAttributes.addFlashAttribute("alertType", "success");
+        redirectAttributes.addFlashAttribute("alertMessage", "Showcase Item Added");
         return "redirect:/admin/showcase";
     }
 
     @GetMapping("/edit/{id}")
-    public String editShowcase(@PathVariable long id, Model model) {
-        ShowcaseItem item = service.getShowCaseItemById(id);
+    public String editShowcase(@PathVariable long id, Model model) throws Exception { 
+        ShowcaseResponse item = service.getShowCaseItemById(id);
         model.addAttribute("showcaseItem", item);
         model.addAttribute("successMessage", "Showcase was successfully modified");
     return "showcase-edit";

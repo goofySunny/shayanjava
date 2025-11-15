@@ -1,7 +1,5 @@
 package ir.najaftech.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,28 +7,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "showcase_item")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
+@Table(name = "showcase_items")
 public class ShowcaseItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "showcase_items_seq")
+    @SequenceGenerator(name = "showcase_items_seq", sequenceName = "showcase_items_seq", initialValue = 4, allocationSize = 1)
     private long id;
 
-    @Column(name = "description")
+    @Column(name = "item_description")
     private String desc;
 
     private String title;
 
-    @Lob
-    private byte[] image;
+    @Column(name = "image_name")
+    private String imageName;
 
     private boolean active;
-
-    @Transient
-    private MultipartFile file;
 
 }

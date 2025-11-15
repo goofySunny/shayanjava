@@ -2,6 +2,7 @@ package ir.najaftech.controller;
 
 import java.io.IOException;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,9 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import ir.najaftech.model.GalleryItem;
+import ir.najaftech.dto.request.GalleryItemRequest;
+import ir.najaftech.dto.response.GalleryItemResponse;
 import ir.najaftech.service.GalleryItemService;
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class ProtectedGalleryController {
 
     private final GalleryItemService service;
+    ModelMapper modelMapper;
 
     @GetMapping()
     public ModelAndView galleryDash() {
@@ -32,31 +37,39 @@ public class ProtectedGalleryController {
 
     @GetMapping("/add")
     public String createGalleryItem(Model model) {
-        model.addAttribute("galleryItem", new GalleryItem());
+        model.addAttribute("galleryItem", new GalleryItemRequest());
         return "gallery-addition";
     }
 
     @PostMapping("/upload")
-    public String uploadNewGalleryItem(@ModelAttribute GalleryItem item, Model model, BindingResult result)
+    public String uploadNewGalleryItem(@ModelAttribute GalleryItemRequest item, RedirectAttributes redirectAttributes,
+            BindingResult result, MultipartFile file)
             throws IOException {
 
         if (result.hasErrors()) {
-            model.addAttribute("message", "Something went wrong");
+            redirectAttributes.addFlashAttribute("showAlert", true);
+            redirectAttributes.addFlashAttribute("alertTitle", "Fail!");
+            redirectAttributes.addFlashAttribute("alertType", "error");
+            redirectAttributes.addFlashAttribute("alertMessage", "Something went wrong!");
             return "redirect:/add";
         }
 
-        service.createGalleryItem(item);
-
-        model.addAttribute("message", "Gallery Item added");
+        service.createGalleryItem(item, file);
+        redirectAttributes.addFlashAttribute("showAlert", true);
+        redirectAttributes.addFlashAttribute("alertTitle", "Success");
+        redirectAttributes.addFlashAttribute("alertType", "success");
+        redirectAttributes.addFlashAttribute("alertMessage", "Gallery Item Added");
         return "redirect:/admin/gallery/add";
     }
 
     @PostMapping("/edit/{id}")
-    public String updateGalleryItem(@PathVariable long id, @ModelAttribute GalleryItem item, Model model,
+    public String updateGalleryItem(@PathVariable long id, @ModelAttribute GalleryItemRequest item, Model model,
             BindingResult result) {
 
         if (result.hasErrors()) {
-            model.addAttribute("message", "Something went wrong");
+            model.addAttribute("showAlert", true);
+            model.addAttribute("alertTitle", "");
+            model.addAttribute("alertMessage", "");
             return "redirect:/admin/gallery/edit/" + id;
         }
 
@@ -73,10 +86,22 @@ public class ProtectedGalleryController {
 
     @GetMapping("/edit/{id}")
     public String editGalleryItem(@PathVariable long id, Model model) throws Exception {
-        GalleryItem item = service.getGalleryItemById(id);
+        GalleryItemResponse item = service.getGalleryItemById(id);
         model.addAttribute("galleryItem", item);
         model.addAttribute("successMessage", "Gallery Item was successfully modified");
         return "gallery-edit";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteGalleryItem(@PathVariable long id, RedirectAttributes redirectAttributes) throws Exception {
+        service.deleteGalleryItem(id);
+
+        redirectAttributes.addFlashAttribute("showAlert", true);
+        redirectAttributes.addFlashAttribute("alertTitle", "Success!");
+        redirectAttributes.addFlashAttribute("alertType", "success");
+        redirectAttributes.addFlashAttribute("alertMessage", "Gallery Item Deleted Successfully");
+
+        return "redirect:/admin/gallery";
     }
 
 }
