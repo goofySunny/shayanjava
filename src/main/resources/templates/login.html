@@ -7,6 +7,12 @@
   <title>Login - Shayan</title>
   <link rel="stylesheet" href="/css/style.css">
   <style>
+
+    .main-section {
+        margin-top: 2rem;
+        min-height: 80vh;
+    }
+
     form {
         width: 50%;
         margin: auto;
@@ -22,21 +28,23 @@
             text-align: center;
             padding: 0.5rem;
             border-radius: 15px;
-            background-color: blue;
+            background-color: rgb(25, 161, 127);
             color: white;
             width: 50%;
         }
 
         button:hover, a:hover {
-            background-color: aqua;
+            background-color: rgba(25, 161, 127, 0.774);
+            color: black;
+            transition: 0.5s ease;
         }
     }
   </style>
 </head>
-<body th:class="${preferredTheme}">
-    <div th:replace="fragments/main-header"></div>
+<body>
+    <div th:replace="fragments/common.html :: header"></div>
 
-    <div>
+    <section class="main-section">
         <form th:action="@{/login}" method="post">
             <label for="username">Username: </label>
             <input type="text" name="username" id="username">
@@ -47,8 +55,8 @@
                 <button type="submit">Login</button>
             </div>
         </form>    
-    </div>
+    </section>
 
-    <div th:replace="fragments/footer"></div>
+    <div th:replace="fragments/common.html :: footer"></div>
     <script src="/js/loading.js"></script>
 </body>

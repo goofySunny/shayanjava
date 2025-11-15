@@ -1,55 +1,58 @@
-const slider = document.querySelector("#slider");
-const leftSlide = document.querySelector("#left");
-const rightSlide = document.querySelector("#right");
-const loader = document.querySelector("#loader");
-const hero = document.querySelector("#hero");
+/* Carousel */
+(function () {
+  const slidesContainer = document.getElementById('slides');
+  const slides = slidesContainer.children;
 
-let heroIndex = 0;
+  const dotsContainer = document.getElementById('dots');
+  const carousel = document.querySelector('.carousel');
 
-function slide(direction) {
-    switch (direction) {
-        case "right":
-            slider.scrollLeft += 100;
-            break;
-        case "left":
-            slider.scrollLeft -= 100;
-            break;
-    }
-}
+  let currentIndex = 0;
+  let timer = null;
+  const totalSlides = slides.length;
 
+  // Create navigation dots
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.dataset.index = i;
 
-function scrollHeroItem() {
-    let heroItems = document.querySelectorAll(".hero-item");
-    console.log(heroItems)
-    for (let i = 0; i < heroItems.length; i++) {
-        heroItems[i].classList.remove("active");
-        heroItems[i].classList.remove("deactive");
-    }
-    heroIndex++;
-    if (heroIndex >= heroItems.length) {
-        heroIndex = 0;
-    }
-    if (heroIndex == 0) {
-        heroItems[heroItems.length - 1].classList.add("deactive");
-    } else {
-        heroItems[heroIndex - 1].classList.add("deactive");
-    }
-    heroItems[heroIndex].classList.add("active");
-    console.log(heroItems[heroIndex])
-}
+    dot.addEventListener('click', () => {
+      goToSlide(i);
+      resetTimer();
+    });
 
-leftSlide.addEventListener("click", () => {
-    slide("left");
-})
+    dotsContainer.appendChild(dot);
+  }
 
-rightSlide.addEventListener("click", () => {
-    slide("right");
-})
+  function updateCarousel() {
+    // Move slides
+    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-// On load
-document.addEventListener("DOMContentLoaded", () => {
+    // Update dot states
+    document
+      .querySelectorAll('.dot')
+      .forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+  }
 
-    setInterval(() => {
-        scrollHeroItem();
-    }, 5000);
-})
+  function goToSlide(index) {
+    currentIndex = (index + totalSlides) % totalSlides;
+    updateCarousel();
+  }
+
+  function nextSlide() {
+    goToSlide(currentIndex + 1);
+  }
+
+  function resetTimer() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(nextSlide, 4500);
+  }
+
+  // Initialize carousel
+  updateCarousel();
+  resetTimer();
+
+  // Pause rotation on hover
+  carousel.addEventListener('mouseenter', () => clearInterval(timer));
+  carousel.addEventListener('mouseleave', resetTimer);
+})();

@@ -61,6 +61,20 @@ public class MainController {
         return "gallery";
     }
 
+    @GetMapping("/products")
+    public String productsPage() {
+        // TODO‌ :‌ ‌‌‌‌Retrieve All products and display them here
+        // TODO‌ : If there exists a search query return matching results‌‌‌
+        return "products";
+    }
+
+    @GetMapping("/projects")
+    public String projectsPage() {
+        // TODO‌ :‌ ‌‌‌‌Retrieve All projects and display them here
+        // TODO‌ : If there exists a search query return matching results‌‌‌
+        return "projects";
+    }
+
     @GetMapping("/showcase/{id}")
     public String focusShowcase(@PathVariable Long id, Model model) throws Exception {
         model.addAttribute("showcase", showcaseService.getShowCaseItemById(id));
@@ -88,5 +102,6 @@ public class MainController {
         }
 
     }
+
 
 }
