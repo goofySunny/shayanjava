@@ -8,10 +8,12 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/admin-panel.css">
 </head>
-<body th:class="${preferredTheme}">
-    <div th:replace="fragments/admin-header"></div>
-    <h1>Manage showcase items below</h1>
 
+<body th:class="${preferredTheme}">
+  <div th:replace="fragments/common.html :: header"></div>
+  <h1>Manage showcase items below</h1>
+
+  <div class="table-parent">
     <table>
       <thead>
         <tr>
@@ -30,6 +32,9 @@
           <th>
             Edit
           </th>
+          <th>
+            Delete
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -39,14 +44,18 @@
             <td th:text="${showcase.title}"></td>
             <td th:text="${showcase.desc}"></td>
             <td th:text="${showcase.active ? 'True' : 'False'}"></td>
-            <td><a th:href="@{/admin/showcase/edit/{id}(id=${showcase.id})}">Edit</a></td>
+            <td><a class="edit" th:href="@{/admin/showcase/edit/{id}(id=${showcase.id})}">Edit</a></td>
+            <td><a class="delete" th:href="@{/admin/showcase/delete/{id}(id=${showcase.id})}">Delete</a></td>
           </tr>
         </div>
       </tbody>
     </table>
 
-    <a href="/admin/showcase/add">Add New</a>
-    
-    <script src="/js/loading.js"></script>
-    <script src="/js/admin-header.js"></script>
+    <a href="/admin/showcase/add" class="add">Add New</a>
+
+  </div>
+
+
+
+  <script src="/js/loading.js"></script>
 </body>

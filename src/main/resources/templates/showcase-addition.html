@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/css/alerts.css">
 </head>
 <body th:class="${preferredTheme}">
-    <div th:replace="fragments/admin-header"></div>
+    <div th:replace="fragments/common.html :: header"></div>
     <h1>Add new Showcase item</h1>
     <!-- Alerts -->
     <div class="alert" th:classappend="${alertType}" th:if="${showAlert}" id="alert">
