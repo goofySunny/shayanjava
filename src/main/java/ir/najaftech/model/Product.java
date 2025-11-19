@@ -40,4 +40,7 @@ public class Product {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+    @Column(name = "is_showcased")
+    private boolean showcased; 
+
 }

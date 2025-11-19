@@ -18,4 +18,6 @@ public interface ProductService {
     void deleteProduct(Long id) throws Exception;
 
     ProductResponse updateProduct(Long id, ProductRequest productRequest) throws Exception;
+
+    List<ProductResponse> getShowcasedProducts();
 }

@@ -46,6 +46,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<ProductResponse> getShowcasedProducts() {
+        List<ProductResponse> responses = new java.util.ArrayList<>();
+        repo.findByShowcasedTrue().forEach(product -> {
+            ProductResponse response = modelMapper.map(product, ProductResponse.class);
+            response.setCategoryName(product.getCategory().getName());
+            responses.add(response);
+        });
+        return responses;
+    }
+
+    @Override
     public List<ProductResponse> getProductsByCategoryId(Long categoryId) {
         List<ProductResponse> responses = new java.util.ArrayList<>();
         repo.findByCategoryId(categoryId).forEach(product -> {

@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS public.products (
     description TEXT,
     price BIGINT NOT NULL,
     image_name TEXT,
+    is_showcased BOOLEAN DEFAULT FALSE,
     CONSTRAINT fk_category
         FOREIGN KEY(category_id) 
             REFERENCES public.categories(id)
