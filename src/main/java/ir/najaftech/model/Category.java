@@ -19,6 +19,7 @@ public class Category {
     @SequenceGenerator(name = "categories_seq", sequenceName = "categories_seq", allocationSize = 1)
     private Long id;
 
+    @Column(name = "cat_name")
     private String name;
 
     @Column(name = "image_name")

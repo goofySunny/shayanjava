@@ -3,14 +3,14 @@ CREATE SEQUENCE public.products_seq START 205 INCREMENT 1;
 
 CREATE TABLE IF NOT EXISTS public.categories (
     id int8 PRIMARY KEY DEFAULT nextval('public.categories_seq'),
-    name VARCHAR(100) NOT NULL,
+    cat_name VARCHAR(100) NOT NULL,
     image_name TEXT
 );
 
 CREATE TABLE IF NOT EXISTS public.products (
     id int8 PRIMARY KEY DEFAULT nextval('public.products_seq'),
     category_id int8 NOT NULL,
-    name VARCHAR(150) NOT NULL,
+    product_name VARCHAR(150) NOT NULL,
     description TEXT,
     price BIGINT NOT NULL,
     image_name TEXT,

@@ -26,6 +26,7 @@ public class Product {
     @SequenceGenerator(name = "products_seq", sequenceName = "products_seq", allocationSize = 1)
     private Long id;
 
+    @Column(name = "product_name")
     private String name;
 
     private long price;
