@@ -58,7 +58,7 @@
           <a href="#" style="color:var(--green-900); font-weight:600">نمایش همه</a>
         </div>
         <div class="categories">
-          <div class="cat">
+          <!-- <div class="cat">
             <div class="icon">A</div>
             <div>دسته ۱</div>
           </div>
@@ -89,6 +89,13 @@
           <div class="cat">
             <div class="icon">H</div>
             <div>دسته ۸</div>
+          </div> -->
+
+          <div th:each="cat : ${categories}" class="cat">
+            <div class="icon" 
+            th:style="|background-image:url('@{/images/{image} (image=${cat.imageName})}')|"
+            ></div>
+            <div th:text="${cat.name}">دسته ۲</div>
           </div>
         </div>
       </div>

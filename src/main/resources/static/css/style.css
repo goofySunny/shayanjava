@@ -213,6 +213,9 @@ nav a {
   height: 64px;
   border-radius: 10px;
   background: linear-gradient(180deg, var(--green-900), var(--green-800));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
