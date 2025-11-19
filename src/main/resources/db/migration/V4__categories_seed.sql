@@ -9,4 +9,4 @@ INSERT INTO public.categories (cat_name, image_name) VALUES
 INSERT INTO public.categories (cat_name, image_name) VALUES
 ('بتن', 'concrete.jpg');
 INSERT INTO public.categories (cat_name, image_name) VALUES
-('چوبی', 'wooden.jpg');
+('چوبی', 'wood.jpg');
