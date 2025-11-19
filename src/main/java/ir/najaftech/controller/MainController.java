@@ -2,6 +2,7 @@ package ir.najaftech.controller;
 
 import ir.najaftech.service.CategoryService;
 import ir.najaftech.service.GalleryItemService;
+import ir.najaftech.service.ProductService;
 import ir.najaftech.service.ProvidedServiceItemService;
 import ir.najaftech.service.ShowcaseItemService;
 import jakarta.servlet.http.HttpSession;
@@ -25,6 +26,7 @@ public class MainController {
     private final GalleryItemService galleryService;
     private final ProvidedServiceItemService providedServiceItemService;
     private final CategoryService categoryService;
+    private final ProductService productService;
 
     @GetMapping
     public String home(Model model, HttpSession session) {
@@ -34,6 +36,7 @@ public class MainController {
         model.addAttribute("providedServiceItems", providedServiceItemService.getAllActiveProvidedServiceItems());
         model.addAttribute("galleryItems", galleryService.getAllActiveGalleryItems());
         model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("products", productService.getShowcasedProducts());
 
         return "index";
     }
