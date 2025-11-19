@@ -4,7 +4,6 @@ import java.util.List;
 
 import ir.najaftech.dto.request.ProductRequest;
 import ir.najaftech.dto.response.ProductResponse;
-import ir.najaftech.model.Product;
 
 public interface ProductService {
 
