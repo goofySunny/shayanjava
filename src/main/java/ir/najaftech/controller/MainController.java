@@ -1,5 +1,13 @@
 package ir.najaftech.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import ir.najaftech.service.CategoryService;
 import ir.najaftech.service.GalleryItemService;
 import ir.najaftech.service.ProductService;
@@ -7,14 +15,6 @@ import ir.najaftech.service.ProvidedServiceItemService;
 import ir.najaftech.service.ShowcaseItemService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -61,17 +61,45 @@ public class MainController {
         if (searchContext == null) {
             model.addAttribute("galleryItems", galleryService.getAllActiveGalleryItems());
         } else {
-            // TODO : make this happenw
-            // model.addAttribute("galleryItems", galleryService.getAllByMatchingPattern(searchContext));
+            // TODO : make this happen
+            // model.addAttribute("galleryItems",
+            // galleryService.getAllByMatchingPattern(searchContext));
         }
         return "gallery";
     }
 
     @GetMapping("/products")
-    public String productsPage() {
-        // TODO‌ :‌ ‌‌‌‌Retrieve All products and display them here
-        // TODO‌ : If there exists a search query return matching results‌‌‌
+    public String productsPage(Model model, @RequestParam(required=false) String param) throws Exception {
+
+        // Handle Search
+        if (param != null && !param.isEmpty()) {
+            model.addAttribute("searchContext", param);
+            // TODO : make this happen
+            // model.addAttribute("products",
+            // productService.getAllByMatchingPattern(param));
+        } else {
+            model.addAttribute("products", productService.getAllProducts());
+        }
         return "products";
+    }
+
+    @GetMapping("/products/{id}")
+    public String specificProductPage(@PathVariable Long id, Model model) throws Exception {
+        model.addAttribute("product", productService.getProductById(id));
+        return "product";
+    }
+
+    @GetMapping("/categories")
+    public String categoriesPage(Model model) {
+        model.addAttribute("categories", categoryService.findAll());
+        return "categories";
+    }
+
+    @GetMapping("/categories/{id}")
+    public String specificCategoryPage(@PathVariable Long id, Model model) throws Exception {
+        model.addAttribute("category", categoryService.findById(id));
+        // model.addAttribute("products", productService.getProductsByCategoryId(id));
+        return "category";
     }
 
     @GetMapping("/projects")
@@ -108,6 +136,5 @@ public class MainController {
         }
 
     }
-
 
 }

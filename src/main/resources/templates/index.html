@@ -92,8 +92,10 @@
           </div> -->
 
           <div th:each="cat : ${categories}" class="cat">
-            <div class="icon" th:style="|background-image:url('@{/images/{image} (image=${cat.imageName})}')|"></div>
-            <div th:text="${cat.name}">دسته ۲</div>
+            <a th:href="@{/categories/{id} (id=${cat.id})}" class="category-link">
+              <div class="icon" th:style="|background-image:url('@{/images/{image} (image=${cat.imageName})}')|"></div>
+              <div th:text="${cat.name}">دسته ۲</div>
+            </a>
           </div>
         </div>
       </div>
