@@ -155,6 +155,8 @@
             </div> -->
 
             <div class="product" th:each="product : ${products}">
+              <a style="text-decoration: none; color: black;" th:href="@{products/{id} (id=${product.id})}">
+
               <div class="img" th:style="|background-image:url('@{/images/{image} (image=${product.imageName})}')|">
               </div>
 
@@ -162,6 +164,8 @@
                 <h4 th:text="${product.name}">نام محصول ۲</h4>
                 <p th:text="${product.description}">توضیح کوتاه درباره محصول و ویژگی‌های آن.</p>
               </div>
+
+              </a>
             </div>
 
           </div>
