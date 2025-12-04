@@ -1,0 +1,38 @@
+services:
+  app:
+    image: 'shayan:latest'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/shayan
+      - SPRING_DATASOURCE_USERNAME=compose-shayan
+      - SPRING_DATASOURCE_PASSWORD=compose-shayan
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
+          
+  db:
+    image: 'postgres:18'
+    container_name: db
+    environment:
+      - POSTGRES_USER=compose-shayan
+      - POSTGRES_PASSWORD=compose-shayan
+      - POSTGRES_DB=shayan
+    ports:
+      - "5431:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U compose-shayan"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - dbdata:/var/lib/postgresql/data2
+
+
+volumes:
+  dbdata:
