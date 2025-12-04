@@ -6,19 +6,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" th:href="@{/css/cats.css}">
   <style>
-    .main-section {
-      min-height: 90vh;
-    }
   </style>
 </head>
+
 <body>
-    <div th:replace="fragments/common.html :: header"></div>
+  <div th:replace="fragments/common.html :: header"></div>
 
-    <section class="main-section">
+  <h2>همه محصولات</h2>
 
-    </section>
+  <section class="main-full">
 
-    <div th:replace="fragments/common.html :: footer"></div>
-    <script src="/js/loading.js"></script>
+    <div class="products-container">
+
+      <div th:each="product : ${products}">
+
+        <div class="product-card">
+
+
+          <div class="product-image">
+            <img th:src="@{/images/{name} (name=${product.imageName})}" width="150px" height="150px"
+              alt="Product Image">
+          </div>
+
+          <div class="product-details">
+            <a th:href="@{/products/{id} (id=${product.id})}">
+            <h2 th:text="${product.name}">Product Name</h2>
+            <p th:text="${product.description}">Product Description</p>
+            <span class="price" th:text="${product.price}">Product Price</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <div th:replace="fragments/common.html :: footer"></div>
+  <script src="/js/loading.js"></script>
 </body>

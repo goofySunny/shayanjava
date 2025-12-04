@@ -56,3 +56,31 @@
   carousel.addEventListener('mouseenter', () => clearInterval(timer));
   carousel.addEventListener('mouseleave', resetTimer);
 })();
+
+// Make products scroll automatically
+(function () {
+  const productContainer = document.querySelector('.products');
+
+  let scrollAmount = 0;
+  const scrollStep = 1; // pixels to scroll each interval
+  const scrollInterval = 20; // interval in milliseconds
+
+  function autoScroll() {
+    scrollAmount += scrollStep;
+    if (scrollAmount >= productContainer.scrollWidth - productContainer.clientWidth) {
+      scrollAmount = 0; // Reset to start
+    }
+    productContainer.scrollTo({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+
+  let scrollTimer = setInterval(autoScroll, scrollInterval);
+
+  // Pause scrolling on hover
+  productContainer.addEventListener('mouseenter', () => clearInterval(scrollTimer));
+  productContainer.addEventListener('mouseleave', () => {
+    scrollTimer = setInterval(autoScroll, scrollInterval);
+  });
+})();

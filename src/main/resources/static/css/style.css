@@ -213,6 +213,9 @@ nav a {
   height: 64px;
   border-radius: 10px;
   background: linear-gradient(180deg, var(--green-900), var(--green-800));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -239,6 +242,7 @@ nav a {
 
 .product {
   min-width: 260px;
+  max-width: 33%;
   background: #fff;
   border-radius: var(--radius);
   box-shadow: var(--card-shadow);
@@ -263,6 +267,12 @@ nav a {
   margin: 0;
   font-size: 14px;
   color: #555;
+  direction: rtl;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 

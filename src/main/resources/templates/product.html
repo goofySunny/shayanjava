@@ -1,0 +1,25 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Shayan</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/cats.css">
+</head>
+
+<body>
+    <div th:replace="fragments/common.html :: header"></div>
+
+    <section class="main-full">
+        <div class="container">
+            <img th:src="@{/images/{image} (image=${product.imageName})}" width="300px" height="300px" alt="">
+            <h4 th:text="${product.name}">Product Name</h4>
+            <p th:text="${product.description}">Description</p>
+        </div>
+    </section>
+
+    <div th:replace="fragments/common.html :: footer"></div>
+    <script src="/js/loading.js"></script>
+</body>

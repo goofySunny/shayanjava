@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Not Found</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/cats.css}">
+</head>
+
+<body th:class="${preferredTheme}">
+  <div th:replace="fragments/common.html :: header"></div>
+
+  <section class="main-full">
+
+    <div class="cat-container">
+
+      <div th:each="cat : ${categories}">
+
+        <div class="cat-card">
+          <a th:href="@{/categories/{id}(id=${cat.id})}">
+            <img th:src="@{/images/{id} (id=${cat.imageName})}" width="150px" height="150px" alt="">
+            <div class="cat-info">
+              <h3 th:text="${cat.name}">Category Name</h3>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <div th:replace="fragments/common.html :: footer"></div>
+  <script src="/js/loading.js"></script>
+</body>

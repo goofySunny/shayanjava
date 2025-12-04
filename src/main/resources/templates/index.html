@@ -58,7 +58,7 @@
           <a href="#" style="color:var(--green-900); font-weight:600">نمایش همه</a>
         </div>
         <div class="categories">
-          <div class="cat">
+          <!-- <div class="cat">
             <div class="icon">A</div>
             <div>دسته ۱</div>
           </div>
@@ -89,6 +89,13 @@
           <div class="cat">
             <div class="icon">H</div>
             <div>دسته ۸</div>
+          </div> -->
+
+          <div th:each="cat : ${categories}" class="cat">
+            <a th:href="@{/categories/{id} (id=${cat.id})}" class="category-link">
+              <div class="icon" th:style="|background-image:url('@{/images/{image} (image=${cat.imageName})}')|"></div>
+              <div th:text="${cat.name}">دسته ۲</div>
+            </a>
           </div>
         </div>
       </div>
@@ -103,7 +110,8 @@
         <div class="products-wrap">
 
           <div class="products" id="products">
-            <div class="product">
+
+            <!-- <div class="product">
               <div class="img" style="background-image:url('https://via.placeholder.com/600x400?text=Product+1')"></div>
               <div class="body">
                 <h4>نام محصول ۱</h4>
@@ -144,7 +152,22 @@
                 <h4>نام محصول ۴</h4>
                 <p>توضیح کوتاه درباره محصول و ویژگی‌های آن.</p>
               </div>
+            </div> -->
+
+            <div class="product" th:each="product : ${products}">
+              <a style="text-decoration: none; color: black;" th:href="@{products/{id} (id=${product.id})}">
+
+              <div class="img" th:style="|background-image:url('@{/images/{image} (image=${product.imageName})}')|">
+              </div>
+
+              <div class="body">
+                <h4 th:text="${product.name}">نام محصول ۲</h4>
+                <p th:text="${product.description}">توضیح کوتاه درباره محصول و ویژگی‌های آن.</p>
+              </div>
+
+              </a>
             </div>
+
           </div>
         </div>
       </div>
