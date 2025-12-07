@@ -64,6 +64,12 @@ a {
   }
 }
 
+.product-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
