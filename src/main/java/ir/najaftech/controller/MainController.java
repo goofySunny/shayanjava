@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import ir.najaftech.service.CategoryService;
 import ir.najaftech.service.GalleryItemService;
 import ir.najaftech.service.ProductService;
+import ir.najaftech.service.ProjectService;
 import ir.najaftech.service.ProvidedServiceItemService;
 import ir.najaftech.service.ShowcaseItemService;
 import jakarta.servlet.http.HttpSession;
@@ -27,6 +28,7 @@ public class MainController {
     private final ProvidedServiceItemService providedServiceItemService;
     private final CategoryService categoryService;
     private final ProductService productService;
+    private final ProjectService projectService;
 
     @GetMapping
     public String home(Model model, HttpSession session) {
@@ -37,6 +39,7 @@ public class MainController {
         model.addAttribute("galleryItems", galleryService.getAllActiveGalleryItems());
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("products", productService.getShowcasedProducts());
+        model.addAttribute("projects", projectService.getAllProjects());
 
         return "index";
     }
@@ -103,9 +106,8 @@ public class MainController {
     }
 
     @GetMapping("/projects")
-    public String projectsPage() {
-        // TODO‌ :‌ ‌‌‌‌Retrieve All projects and display them here
-        // TODO‌ : If there exists a search query return matching results‌‌‌
+    public String projectsPage(Model model) {
+        model.addAttribute("projects", projectService.getAllProjects());
         return "projects";
     }
 
