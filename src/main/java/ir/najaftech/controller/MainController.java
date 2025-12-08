@@ -131,7 +131,7 @@ public class MainController {
     // Utility method to get and set the theme
     private void getAndOrSetTheme(Model model, HttpSession session) {
         String theme = (String) session.getAttribute("preferredTheme");
-        if (theme != null && (theme == "light" || theme == "dark")) {
+        if (theme != null && (theme.equals("light") || theme.equals("dark"))) {
             model.addAttribute("preferredTheme", theme);
         } else {
             model.addAttribute("preferredTheme", "light");
