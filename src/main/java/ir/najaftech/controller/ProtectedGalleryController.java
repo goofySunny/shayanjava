@@ -2,7 +2,6 @@ package ir.najaftech.controller;
 
 import java.io.IOException;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +25,6 @@ import lombok.RequiredArgsConstructor;
 public class ProtectedGalleryController {
 
     private final GalleryItemService service;
-    ModelMapper modelMapper;
 
     @GetMapping()
     public ModelAndView galleryDash() {

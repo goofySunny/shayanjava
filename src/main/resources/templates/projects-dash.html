@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shayan Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin-panel.css">
+</head>
+
+<body th:class="${preferredTheme}">
+  <div th:replace="fragments/common.html :: header"></div>
+  <h1>Manage showcase items below</h1>
+
+  <div class="table-parent">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            Image
+          </th>
+          <th>
+            Title
+          </th>
+          <th>
+            Full description
+          </th>
+          <th>
+            Active
+          </th>
+          <th>
+            Edit
+          </th>
+          <th>
+            Delete
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <div th:each="project : ${projects}">
+          <tr>
+            <td><img th:src="@{/images/{t} (t=${project.imageName})}" alt="project image"></td>
+            <td th:text="${project.title}"></td>
+            <td th:text="${project.description}"></td>
+            <td th:text="${project.active ? 'True' : 'False'}"></td>
+            <td><a class="edit" th:href="@{/admin/project/edit/{id}(id=${project.id})}">Edit</a></td>
+            <td><a class="delete" th:href="@{/admin/project/delete/{id}(id=${project.id})}">Delete</a></td>
+          </tr>
+        </div>
+      </tbody>
+    </table>
+
+    <a href="/admin/project/add" class="add">Add New</a>
+
+  </div>
+
+  <script src="/js/loading.js"></script>
+</body>

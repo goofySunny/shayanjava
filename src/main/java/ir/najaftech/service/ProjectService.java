@@ -3,13 +3,14 @@ package ir.najaftech.service;
 import java.util.List;
 
 import ir.najaftech.dto.request.ProjectRequest;
+import ir.najaftech.dto.response.ProjectResponse;
 import ir.najaftech.model.Project;
 
 public interface ProjectService {
 
-    Project getProjectById(long id) throws Exception;
+    ProjectResponse getProjectById(long id) throws Exception;
 
-    List<Project> getAllProjects();
+    List<ProjectResponse> getAllProjects();
 
     Project createProject(ProjectRequest req) throws Exception;
 
